@@ -1,0 +1,75 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile: CHANGEME_TASKLABEL",
+      "type": "shell",
+      "command": ".vscode/scripts/run_sql.sh",
+      "args": [
+        // "${relativeFile}",
+        // "${file}"
+        // Escaped double quotes are required to make compatible with Cmder in Windows
+        "\"${relativeFile}\"",
+        "\"${file}\""
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "options": {},
+      "problemMatcher": []
+    },
+    // EXPORT apex applications
+    {
+      "label": "apex export: CHANGEME_TASKLABEL",
+      "type": "shell",
+      "command": ".vscode/scripts/apex_export.sh",
+      "args": [],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "options": {},
+      "problemMatcher": []
+    },
+    {
+      "label": "generate object: CHANGEME_TASKLABEL",
+      "type": "shell",
+      "command": ".vscode/scripts/gen_object.sh",
+      "args": [
+        "${input:newObjectType}",
+        "${input:newObjectName}"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "options": {},
+      "problemMatcher": []
+    },
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "newObjectType",
+      "description": "Testing types to include",
+      // Note: these options must match what's in scripts/project-config.sh
+      "options": [
+        "package",
+        "view",
+        "data_array",
+        "data_json"
+      ]
+    },
+    {
+      "type": "promptString",
+      "id": "newObjectName",
+      "description": "Object name"
+    }
+  ]
+}
