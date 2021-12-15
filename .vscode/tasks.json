@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "compile: CHANGEME_TASKLABEL",
+      "label": "compile: code_standard_tracking",
       "type": "shell",
       "command": ".vscode/scripts/run_sql.sh",
       "args": [
@@ -24,7 +24,7 @@
     },
     // EXPORT apex applications
     {
-      "label": "apex export: CHANGEME_TASKLABEL",
+      "label": "apex export: code_standard_tracking",
       "type": "shell",
       "command": ".vscode/scripts/apex_export.sh",
       "args": [],
@@ -37,7 +37,7 @@
       "problemMatcher": []
     },
     {
-      "label": "generate object: CHANGEME_TASKLABEL",
+      "label": "generate object: code_standard_tracking",
       "type": "shell",
       "command": ".vscode/scripts/gen_object.sh",
       "args": [
