@@ -30,7 +30,7 @@ wwv_flow_api.create_page(
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220223141413'
+,p_last_upd_yyyymmddhh24miss=>'20220223175041'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1544635702724834143)
@@ -101,7 +101,7 @@ wwv_flow_api.create_report_region(
 '        or (:P19_SHOWONLY = ''N'' and (ac.c001 = ''N'' and nvl(tv.false_positive_yn,''N'')  = ''Y''))',
 '    )'))
 ,p_ajax_enabled=>'Y'
-,p_ajax_items_to_submit=>'P19_SHOWONLY,APX_BLDR_SESSION,P19_LINK_TYPE'
+,p_ajax_items_to_submit=>'P19_VALIDATE,P19_TEST_ID,P19_APPLICATION_ID,P19_SHOWONLY'
 ,p_fixed_header=>'NONE'
 ,p_lazy_loading=>false
 ,p_query_row_template=>wwv_flow_api.id(1851089214477326740)
@@ -925,8 +925,7 @@ wwv_flow_api.create_page_item(
 ,p_item_sequence=>170
 ,p_item_plug_id=>wwv_flow_api.id(1998551522481434892)
 ,p_display_as=>'NATIVE_HIDDEN'
-,p_protection_level=>'S'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 );
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(1998552117682438899)
@@ -934,8 +933,7 @@ wwv_flow_api.create_page_item(
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_api.id(1998551522481434892)
 ,p_display_as=>'NATIVE_HIDDEN'
-,p_protection_level=>'S'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 );
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(1998605134704895275)
@@ -1136,10 +1134,27 @@ wwv_flow_api.create_page_da_event(
 ,p_security_scheme=>wwv_flow_api.id(5057645559768553539)
 );
 wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(17289372311893301)
+,p_event_id=>wwv_flow_api.id(622671738014120619)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'apex.debug.log(''set valid > validate:'', ',
+'               apex.item(''P19_VALIDATE'').getValue(),',
+'               ''> test id'',',
+'               apex.item(''P19_TEST_ID'').getValue(),',
+'               ''> app id'',',
+'               apex.item(''P19_APPLICATION_ID'').getValue()',
+'               );'))
+,p_server_condition_type=>'NEVER'
+);
+wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(622671896558120620)
 ,p_event_id=>wwv_flow_api.id(622671738014120619)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>20
+,p_action_sequence=>30
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -1173,7 +1188,7 @@ wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(622671983122120621)
 ,p_event_id=>wwv_flow_api.id(622671738014120619)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>40
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
