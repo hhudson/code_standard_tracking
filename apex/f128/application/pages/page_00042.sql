@@ -5,7 +5,7 @@ begin
 --   Manifest End
 wwv_flow_api.component_begin (
  p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.6'
+,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>128
 ,p_default_id_offset=>422538065343964275
@@ -22,11 +22,12 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'ON'
 ,p_group_id=>wwv_flow_api.id(3179213876169954377)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'This is a monthly calendar of application activity, reporting distinct users and their total page views by day. Click the <strong><</strong> button to go to the previous month and the <strong>></strong> button to go forward a month. Switch between th'
 ||'e calendar view to the list view by clicking the <strong>list</strong> button.'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182745'
+,p_last_upd_yyyymmddhh24miss=>'20220223141524'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1371494222336267845)

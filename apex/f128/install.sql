@@ -12,10 +12,14 @@ prompt --install
 @@application/shared_components/navigation/lists/code_tables.sql
 @@application/shared_components/navigation/lists/activity_reports.sql
 @@application/plugin_settings.sql
+@@application/shared_components/security/authorizations/reader_rights.sql
 @@application/shared_components/security/authorizations/permalink_page_auth.sql
 @@application/shared_components/security/authorizations/administration_rights.sql
 @@application/shared_components/security/authorizations/application_sentry.sql
 @@application/shared_components/security/authorizations/contribution_rights.sql
+@@application/shared_components/security/app_access_control/administrator.sql
+@@application/shared_components/security/app_access_control/contributor.sql
+@@application/shared_components/security/app_access_control/reader.sql
 @@application/shared_components/navigation/navigation_bar.sql
 @@application/shared_components/logic/application_processes/standard_tests.sql
 @@application/shared_components/logic/application_processes/set_time_zone.sql

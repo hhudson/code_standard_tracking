@@ -5,7 +5,7 @@ begin
 --   Manifest End
 wwv_flow_api.component_begin (
  p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.6'
+,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>128
 ,p_default_id_offset=>422538065343964275
@@ -30,8 +30,10 @@ wwv_flow_api.create_page(
 ,p_inline_css=>'.standards_tester_app {background-position: -384px -384px}'
 ,p_step_template=>wwv_flow_api.id(1851039283873326660)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
-,p_last_upd_yyyymmddhh24miss=>'20170627080252'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141513'
 );
 wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(2470738380389614360)

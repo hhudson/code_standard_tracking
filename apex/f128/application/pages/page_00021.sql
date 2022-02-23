@@ -5,7 +5,7 @@ begin
 --   Manifest End
 wwv_flow_api.component_begin (
  p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.6'
+,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>128
 ,p_default_id_offset=>422538065343964275
@@ -22,11 +22,12 @@ wwv_flow_api.create_page(
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'ON'
 ,p_page_template_options=>'#DEFAULT#:ui-dialog--stretch:t-Dialog--noPadding'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'<p>Tests are automatically run while a user navigates the application. Tests are only run if the test or the targeted application(s) is updated. However, if many applications are updated prior to a user accessing this application, they may encounter '
 ||'a significant delay on first access. To avoid this issue, it is recommended to run the automated testing job, which checks for any updated applications and/or tests on a regular basis and runs the tests as appropriate.</p>'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182640'
+,p_last_upd_yyyymmddhh24miss=>'20220223141436'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(2000575217346300858)

@@ -14,7 +14,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.6'
+,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>128
 ,p_default_id_offset=>422538065343964275
@@ -28,7 +28,7 @@ prompt APPLICATION 128 - Application Standards Tracker
 -- Application Export:
 --   Application:     128
 --   Name:            Application Standards Tracker
---   Date and Time:   20:15 Wednesday December 15, 2021
+--   Date and Time:   14:20 Wednesday February 23, 2022
 --   Exported By:     ILA
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -53,7 +53,8 @@ prompt APPLICATION 128 - Application Standards Tracker
 --         NavBar Entries:         4
 --       Security:
 --         Authentication:         2
---         Authorization:          4
+--         Authorization:          5
+--         ACL Roles:              3
 --       User Interface:
 --         Themes:                 1
 --         Templates:
@@ -75,7 +76,7 @@ prompt APPLICATION 128 - Application Standards Tracker
 --       E-Mail:
 --     Supporting Objects:  Included
 --       Install scripts:         64
---   Version:         21.1.6
+--   Version:         21.1.7
 --   Instance ID:     9590637774721077
 --
 
@@ -109,7 +110,7 @@ wwv_flow_api.create_flow(
 ,p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,'')
 ,p_documentation_banner=>'1.0.0 -> 1.0.1: Implemented redesigned administrative ACL controls'
 ,p_authentication=>'PLUGIN'
-,p_authentication_id=>wwv_flow_api.id(6261948619087129960)
+,p_authentication_id=>wwv_flow_api.id(14727417358654833)
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
 ,p_logo_text=>'&APPLICATION_TITLE.'
@@ -142,7 +143,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182745'
+,p_last_upd_yyyymmddhh24miss=>'20220223141656'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 ,p_print_server_type=>'INSTANCE'
@@ -647,6 +648,28 @@ wwv_flow_api.create_plugin_setting(
 );
 end;
 /
+prompt --application/shared_components/security/authorizations/reader_rights
+begin
+wwv_flow_api.create_security_scheme(
+ p_id=>wwv_flow_api.id(17282124412391192)
+,p_name=>'Reader Rights'
+,p_scheme_type=>'NATIVE_FUNCTION_BODY'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if nvl(apex_app_setting.get_value(',
+'   p_name => ''ACCESS_CONTROL_SCOPE''),''x'') = ''ALL_USERS'' then',
+'    -- allow user not in the ACL to access the application',
+'    return true;',
+'else',
+'    -- require user to have at least one role',
+'    return apex_acl.has_user_any_roles (',
+'        p_application_id => :APP_ID, ',
+'        p_user_name      => :APP_USER);',
+'end if;'))
+,p_error_message=>'You are not authorized to view this application, either because you have not been granted access, or your account has been locked. Please contact the application administrator.'
+,p_caching=>'BY_USER_BY_SESSION'
+);
+end;
+/
 prompt --application/shared_components/security/authorizations/permalink_page_auth
 begin
 wwv_flow_api.create_security_scheme(
@@ -674,11 +697,12 @@ prompt --application/shared_components/security/authorizations/administration_ri
 begin
 wwv_flow_api.create_security_scheme(
  p_id=>wwv_flow_api.id(5057645067995553528)
-,p_name=>'ADMINISTRATION RIGHTS'
-,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'return eba_stds_security.get_authorization_level(:APP_USER) = 3;'
+,p_name=>'Administration Rights'
+,p_scheme_type=>'NATIVE_IS_IN_GROUP'
+,p_attribute_01=>'Administrator'
+,p_attribute_02=>'A'
 ,p_error_message=>'Insufficient privileges, user is not an Administrator'
-,p_caching=>'BY_USER_BY_SESSION'
+,p_caching=>'BY_USER_BY_PAGE_VIEW'
 );
 end;
 /
@@ -705,11 +729,42 @@ prompt --application/shared_components/security/authorizations/contribution_righ
 begin
 wwv_flow_api.create_security_scheme(
  p_id=>wwv_flow_api.id(5057645559768553539)
-,p_name=>'CONTRIBUTION RIGHTS'
-,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'return eba_stds_security.get_authorization_level(:APP_USER) >= 2;'
+,p_name=>'Contribution Rights'
+,p_scheme_type=>'NATIVE_IS_IN_GROUP'
+,p_attribute_01=>'Administrator,Contributor'
+,p_attribute_02=>'A'
 ,p_error_message=>'Insufficient privileges, user is not a Contributor'
-,p_caching=>'BY_USER_BY_SESSION'
+,p_caching=>'BY_USER_BY_PAGE_VIEW'
+);
+end;
+/
+prompt --application/shared_components/security/app_access_control/administrator
+begin
+wwv_flow_api.create_acl_role(
+ p_id=>wwv_flow_api.id(17280908126374350)
+,p_static_id=>'ADMINISTRATOR'
+,p_name=>'Administrator'
+,p_description=>'Role assigned to application administrators.'
+);
+end;
+/
+prompt --application/shared_components/security/app_access_control/contributor
+begin
+wwv_flow_api.create_acl_role(
+ p_id=>wwv_flow_api.id(17281044087376655)
+,p_static_id=>'CONTRIBUTOR'
+,p_name=>'Contributor'
+,p_description=>'Role assigned to application contributors.'
+);
+end;
+/
+prompt --application/shared_components/security/app_access_control/reader
+begin
+wwv_flow_api.create_acl_role(
+ p_id=>wwv_flow_api.id(17281193718378240)
+,p_static_id=>'READER'
+,p_name=>'Reader'
+,p_description=>'Role assigned to application readers.'
 );
 end;
 /
@@ -15083,11 +15138,12 @@ wwv_flow_api.create_page(
 'overflow: auto;',
 '}'))
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'<p>This application is designed to assist in the development of consistent Oracle Application Express (APEX) applications by analyzing each application for adherence to best practices. Appl ications can be divided into different types, with some stan'
 ||'dards applying only to specific types of applications. To test for compliance, create a standard and associate it with the appropriate type(s) of application(s), defining at least one test against the APEX Data Dictionary to verify compliance.</p>'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190925130114'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141220'
 );
 wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(1407277904704543229)
@@ -15581,8 +15637,10 @@ wwv_flow_api.create_page(
 ,p_group_id=>wwv_flow_api.id(3179213876169954377)
 ,p_step_template=>wwv_flow_api.id(1851039283873326660)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
-,p_last_upd_yyyymmddhh24miss=>'20180223140713'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141243'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(6280513495577966547)
@@ -15630,10 +15688,11 @@ wwv_flow_api.create_page(
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'ON'
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'<p>This page provides an overview of the standards which have been defined and their implementation across all relevant applications.</p>'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182640'
+,p_last_upd_yyyymmddhh24miss=>'20220223141257'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1838434240844900106)
@@ -16722,13 +16781,14 @@ wwv_flow_api.create_page(
 '}'))
 ,p_step_template=>wwv_flow_api.id(1851051947395326680)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p>Use this page to define a standard and the automated tests which help indicate whether or not the standard has been implemented in each relevant application.</p>',
 '',
 '<p>Once a standard has at least one automated test, the status column of the applications section indicates the percentage of the automated test(s) each associated application passes.</p>'))
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190924132830'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141313'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1683930583683487517)
@@ -17842,10 +17902,11 @@ wwv_flow_api.create_page(
 '  }',
 '}'))
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'<p>Identify the applications to be tested for compliance.</p>'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182640'
+,p_last_upd_yyyymmddhh24miss=>'20220223141325'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1837833247338296976)
@@ -19127,10 +19188,11 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'ON'
 ,p_group_id=>wwv_flow_api.id(3179213876169954377)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182640'
+,p_last_upd_yyyymmddhh24miss=>'20220223141338'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(4987839573527172086)
@@ -19824,10 +19886,11 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'ON'
 ,p_group_id=>wwv_flow_api.id(3179213876169954377)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182640'
+,p_last_upd_yyyymmddhh24miss=>'20220223141401'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(2164147385882233719)
@@ -22863,10 +22926,11 @@ wwv_flow_api.create_page(
 '        {altSuffix:''&APX_BLDR_SESSION.'',favorTabbedBrowsing: true});',
 '}'))
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190924133720'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141413'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1544635702724834143)
@@ -24101,11 +24165,11 @@ wwv_flow_api.create_page(
 '}'))
 ,p_step_template=>wwv_flow_api.id(1851055474985326683)
 ,p_page_template_options=>'#DEFAULT#'
-,p_nav_list_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190925130215'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141424'
 );
 wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(1275274822097514266)
@@ -24446,11 +24510,12 @@ wwv_flow_api.create_page(
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'ON'
 ,p_page_template_options=>'#DEFAULT#:ui-dialog--stretch:t-Dialog--noPadding'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'<p>Tests are automatically run while a user navigates the application. Tests are only run if the test or the targeted application(s) is updated. However, if many applications are updated prior to a user accessing this application, they may encounter '
 ||'a significant delay on first access. To avoid this issue, it is recommended to run the automated testing job, which checks for any updated applications and/or tests on a regular basis and runs the tests as appropriate.</p>'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182640'
+,p_last_upd_yyyymmddhh24miss=>'20220223141436'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(2000575217346300858)
@@ -27778,11 +27843,11 @@ wwv_flow_api.create_page(
 '}'))
 ,p_step_template=>wwv_flow_api.id(1851051947395326680)
 ,p_page_template_options=>'#DEFAULT#'
-,p_nav_list_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190924133819'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141449'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1838286238946526536)
@@ -29208,8 +29273,10 @@ wwv_flow_api.create_page(
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'ON'
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_help_text=>'No help is available for this page.'
-,p_last_upd_yyyymmddhh24miss=>'20180223140713'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141501'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1925627513764241429)
@@ -29506,8 +29573,10 @@ wwv_flow_api.create_page(
 ,p_inline_css=>'.standards_tester_app {background-position: -384px -384px}'
 ,p_step_template=>wwv_flow_api.id(1851039283873326660)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
-,p_last_upd_yyyymmddhh24miss=>'20170627080252'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141513'
 );
 wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(2470738380389614360)
@@ -29681,11 +29750,12 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'ON'
 ,p_group_id=>wwv_flow_api.id(3179213876169954377)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'This is a monthly calendar of application activity, reporting distinct users and their total page views by day. Click the <strong><</strong> button to go to the previous month and the <strong>></strong> button to go forward a month. Switch between th'
 ||'e calendar view to the list view by clicking the <strong>list</strong> button.'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182745'
+,p_last_upd_yyyymmddhh24miss=>'20220223141524'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1371494222336267845)
@@ -29743,8 +29813,10 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'ON'
 ,p_group_id=>wwv_flow_api.id(5057732479103484048)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
-,p_last_upd_yyyymmddhh24miss=>'20180111133933'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141552'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(5069833588034008868)
@@ -31437,10 +31509,11 @@ wwv_flow_api.create_page(
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'ON'
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190924135939'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141635'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(607984891346455856)
@@ -31529,9 +31602,10 @@ wwv_flow_api.create_page(
 '.apex-item-yes-no {white-space:pre;}'))
 ,p_step_template=>wwv_flow_api.id(2021166353466016317)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190924140006'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141646'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(3557215751446706541)
@@ -32232,9 +32306,10 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>wwv_flow_api.id(1851055474985326683)
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_api.id(17282124412391192)
 ,p_protection_level=>'C'
-,p_last_updated_by=>'CELARA'
-,p_last_upd_yyyymmddhh24miss=>'20190924140042'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20220223141656'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(3192533848526010479)
