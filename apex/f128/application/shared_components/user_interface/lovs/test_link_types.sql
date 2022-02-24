@@ -65,6 +65,12 @@ wwv_flow_api.create_static_lov_data(
 ,p_lov_disp_value=>'List Entry'
 ,p_lov_return_value=>'LISTENTRY'
 );
+wwv_flow_api.create_static_lov_data(
+ p_id=>wwv_flow_api.id(17323250005135179)
+,p_lov_disp_sequence=>18
+,p_lov_disp_value=>'Source Code'
+,p_lov_return_value=>'SOURCE_CODE'
+);
 wwv_flow_api.component_end;
 end;
 /

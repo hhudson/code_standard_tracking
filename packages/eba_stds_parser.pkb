@@ -320,6 +320,9 @@ create or replace package body eba_stds_parser as
                 l_page := 4052;
                 l_link := ':::4050,4052:FB_FLOW_ID,F4000_P4052_ID:'
                     ||p_application_id||','||p_param;
+            when 'SOURCE_CODE' then
+                l_link := 'https://google.com';
+                logger.log('. l_link:', l_scope, l_link);
             else
                 -- Someone tried to link to a component we don't support yet.
                 null;

@@ -1,4 +1,4 @@
-create or replace force view ast_item_help as
+create or replace force view ast_item_help_vw as
  select case when aai.inline_help_text is null
              and  aai.item_help_text is null
              and  aai.display_as not in ('Hidden')
@@ -14,3 +14,4 @@ create or replace force view ast_item_help as
 from apex_application_page_items aai
 order by aai.application_id, aai.page_id, aai.item_id 
 ;
+    

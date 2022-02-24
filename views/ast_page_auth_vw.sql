@@ -1,4 +1,4 @@
-create or replace force view ast_page_auth as
+create or replace force view ast_page_auth_vw as
   select case when aap.page_requires_authentication = 'Yes'
             and aap.authorization_scheme is null
             then 'N'

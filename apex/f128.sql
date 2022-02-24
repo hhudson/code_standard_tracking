@@ -28,7 +28,7 @@ prompt APPLICATION 128 - Application Standards Tracker
 -- Application Export:
 --   Application:     128
 --   Name:            Application Standards Tracker
---   Date and Time:   19:13 Wednesday February 23, 2022
+--   Date and Time:   18:51 Thursday February 24, 2022
 --   Exported By:     ILA
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -143,7 +143,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220223175041'
+,p_last_upd_yyyymmddhh24miss=>'20220224142625'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 ,p_print_server_type=>'INSTANCE'
@@ -1408,6 +1408,12 @@ wwv_flow_api.create_static_lov_data(
 ,p_lov_disp_sequence=>8
 ,p_lov_disp_value=>'List Entry'
 ,p_lov_return_value=>'LISTENTRY'
+);
+wwv_flow_api.create_static_lov_data(
+ p_id=>wwv_flow_api.id(17323250005135179)
+,p_lov_disp_sequence=>18
+,p_lov_disp_value=>'Source Code'
+,p_lov_return_value=>'SOURCE_CODE'
 );
 end;
 /
