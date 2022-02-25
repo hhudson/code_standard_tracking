@@ -1,10 +1,34 @@
-select *
+select distinct table_name
 from all_tab_cols
 where 1=1
 --and column_name like '%ESCA%'
 --AND TABLE_NAME LIKE '%IR%'
 AND OWNER like 'APEX%'
-ORDER BY TABLE_NAME, column_name; 
+and table_name like '%ITEM%'
+ORDER BY TABLE_NAME; 
+/
+select * 
+from WWV_FLOW_EMBEDDED_CODE
+/
+select pass_fail,
+application_item_id,
+application_id, 
+application_name, 
+item_name, 
+scope
+from ast_app_item_naming_vw
+/
+select 
+pass_fail,
+item_id, 
+item_name, 
+application_name, 
+application_id, 
+page_id, 
+page_name, 
+region
+from ast_page_item_naming_vw
+where application_id = :APP_ID
 /
 select case when item_name like 'P'||page_id||'_%'
             then 'Y'
@@ -13,6 +37,14 @@ select case when item_name like 'P'||page_id||'_%'
 item_id, item_name, application_name, application_id, page_id, page_name, region
 from apex_application_page_items
 where page_id not like '%.%' --indicates a translated app
+/
+select 
+case when item_name like 'G_%'
+            then 'Y'
+            else 'N'
+            end as pass_fail,
+application_id, application_name, item_name, scope
+from APEX_APPLICATION_ITEMS
 /
 select * 
 from ast_html_escaping_cols_vw
