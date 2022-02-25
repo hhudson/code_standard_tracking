@@ -218,6 +218,8 @@ create or replace package body eba_stds_parser as
         l_builder_session number := v('APX_BLDR_SESSION');
         l_link varchar2(4000) := null;
         l_version number;
+        l_url_params apex_t_varchar2;
+        l_object_type varchar2(50);
     begin
         logger.append_param(l_params, 'p_test_id', p_test_id);
         logger.append_param(l_params, 'p_application_id', p_application_id);
@@ -321,8 +323,20 @@ create or replace package body eba_stds_parser as
                 l_link := ':::4050,4052:FB_FLOW_ID,F4000_P4052_ID:'
                     ||p_application_id||','||p_param;
             when 'SOURCE_CODE' then
-                l_link := 'https://google.com';
-                logger.log('. l_link:', l_scope, l_link);
+                l_app := 4500;
+                l_page := 1001;
+                
+                l_url_params := apex_string.split(p_param, ':');
+                logger.append_param(l_params, 'object name', l_url_params(1));
+                logger.append_param(l_params, 'object type', l_url_params(2));
+                logger.append_param(l_params, 'line number', l_url_params(3));
+                --4500:1001:5417996368993::::OB_CURRENT_TYPE:PACKAGE
+                l_link := apex_string.format(p_message => '::::OB_CURRENT_TYPE:%0',
+                                             p0 => case when l_url_params(2) = 'PACKAGE BODY'
+                                                        then 'PACKAGE'
+                                                        else l_url_params(2)
+                                                        end);
+                logger.log('. l_link:', l_scope, l_link, l_params);
             else
                 -- Someone tried to link to a component we don't support yet.
                 null;
