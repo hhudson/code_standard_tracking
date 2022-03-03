@@ -1,3 +1,4 @@
+/* this view is referenced in v_ast_db_plsql_all */
 create or replace force view v_ast_db_plsql_deprecated_code as
 select
 case when lower(us.text) like '%nvl%'

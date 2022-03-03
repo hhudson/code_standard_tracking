@@ -1,3 +1,4 @@
+/* this view is referenced in v_ast_db_plsql_all */
 create or replace force view v_ast_db_plsql_identifier_naming as
 with proc_start as (
     select ui.object_name, min(UI.line) start_line

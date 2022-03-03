@@ -1,3 +1,4 @@
+/* this view is referenced in v_ast_db_plsql_all */
 create or replace force view v_ast_db_plsql_unusued_identifiers as
 with  declared_ids  
             as (select object_name  

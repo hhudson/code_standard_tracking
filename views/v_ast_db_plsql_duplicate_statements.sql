@@ -1,3 +1,4 @@
+/* this view is referenced in v_ast_db_plsql_all */
 create or replace force view v_ast_db_plsql_duplicate_statements as
 select
 'This statement appears more than once.' issue,
