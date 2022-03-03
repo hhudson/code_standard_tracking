@@ -1,4 +1,4 @@
-create or replace force view ast_apex_page_help_vw as
+create or replace force view v_ast_apex_page_help as
 select 
 case when aap.help_text is null
      then 'N'

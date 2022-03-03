@@ -1,4 +1,4 @@
-create or replace force view ast_apex_app_auth_vw as
+create or replace force view v_ast_apex_app_auth as
 select 
 case when authorization_scheme is null
     then 'N'

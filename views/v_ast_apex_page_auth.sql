@@ -1,4 +1,4 @@
-create or replace force view ast_apex_page_auth_vw as
+create or replace force view v_ast_apex_page_auth as
 select 
 case when aap.page_requires_authentication = 'Yes'
      and aap.authorization_scheme is null

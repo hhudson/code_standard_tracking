@@ -231,7 +231,10 @@ create or replace package body eba_stds_parser as
                     
                 l_url_params := apex_string.split(p_param, ':');
                 l_object_name := l_url_params(1);
-                l_object_type := l_url_params(2);
+                l_object_type := case when l_url_params(2) = 'PACKAGE BODY'
+                                      then 'PACKAGE'
+                                      else l_url_params(2)
+                                      end;
                 l_line_number := l_url_params(3);
 
                 l_page := case when 1=1
@@ -251,19 +254,13 @@ create or replace package body eba_stds_parser as
 
                 apex_debug.info(l_debug_template, 'l_object_name', l_object_name, 'l_object_type', l_object_type,'l_line_number', l_line_number, 'l_object_id', l_object_id);
 
-                --4500:1001:5417996368993::::OB_CURRENT_TYPE:PACKAGE
-                l_link := apex_string.format(p_message => '::::OB_SCHEMA,OB_CURRENT_TYPE,OB_FIND,OB_OBJECT_NAME,OBJECT_ID,OBJECT_NAME'||
-                                                                ':%3,%4,%5,%0,%1,%2',
-                -- l_link := apex_string.format(p_message => '::::OBJECT_ID:%1',
-                                                p0 => case when l_object_type = 'PACKAGE BODY'
-                                                        then 'PACKAGE'
-                                                        else l_object_type
-                                                        end,
-                                                p1 => l_object_id,
+                l_link := apex_string.format(p_message => ':FOCUS:::OB_SCHEMA,OB_CURRENT_TYPE,OB_FIND,OB_OBJECT_NAME,OB_OBJECT_ID'||
+                                                                ':%0,%1,%2,%3,%4,%5',
+                                                p0 => 'ILA',
+                                                p1 => l_object_type,
                                                 p2 => l_object_name,
-                                                p3 => 'ILA',
-                                                p4 => l_object_type,
-                                                p5 => l_object_name
+                                                p3 => l_object_name,
+                                                p4 => l_object_id
                                                 );
                 apex_debug.message(p_message => l_debug_template, p0 => 'l_link', p1 => l_link, p_level => apex_debug.c_log_level_warn, p_force => true);
             end link_to_source_code;

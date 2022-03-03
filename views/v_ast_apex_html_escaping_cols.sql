@@ -1,4 +1,4 @@
-create or replace force view ast_apex_html_escaping_cols_vw as
+create or replace force view v_ast_apex_html_escaping_cols as
 select 
 case when display_text_as = 'WITHOUT_MODIFICATION'
      then 'N'

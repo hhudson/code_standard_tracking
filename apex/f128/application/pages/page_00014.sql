@@ -24,11 +24,9 @@ wwv_flow_api.create_page(
 ,p_step_template=>wwv_flow_api.id(1851065608201326694)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_api.id(5057645559768553539)
-,p_dialog_height=>'600'
-,p_dialog_width=>'650'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20211215182714'
+,p_last_upd_yyyymmddhh24miss=>'20220303204423'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1371494580324267849)
@@ -204,14 +202,10 @@ wwv_flow_api.create_page_item(
 ,p_item_sequence=>90
 ,p_item_plug_id=>wwv_flow_api.id(1840106239692290084)
 ,p_item_source_plug_id=>wwv_flow_api.id(1840106239692290084)
-,p_use_cache_before_default=>'NO'
 ,p_prompt=>'Check SQL'
 ,p_source=>'CHECK_SQL'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
-,p_display_as=>'NATIVE_TEXTAREA'
-,p_cSize=>64
-,p_cMaxlength=>4000
-,p_cHeight=>8
+,p_display_as=>'PLUGIN_COM.APEXBYG.BLOGSPOT.CODEMIRROR'
 ,p_field_template=>wwv_flow_api.id(1851099516756326769)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -228,10 +222,7 @@ wwv_flow_api.create_page_item(
 'where application_id = :APP_ID',
 '    and ...',
 '</pre>'))
-,p_attribute_01=>'Y'
-,p_attribute_02=>'N'
-,p_attribute_03=>'N'
-,p_attribute_04=>'NONE'
+,p_attribute_01=>'N'
 );
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(1840108434872290107)

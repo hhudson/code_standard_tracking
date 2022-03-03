@@ -25,6 +25,14 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(17633687524659433)
+,p_list_item_display_sequence=>25
+,p_list_item_link_text=>'Contribute'
+,p_list_item_link_target=>'https://github.com/hhudson/code_standard_tracking'
+,p_list_item_icon=>'fa-coffee'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(1863794418889660537)
 ,p_list_item_display_sequence=>30
 ,p_list_item_link_text=>'&APP_USER.'

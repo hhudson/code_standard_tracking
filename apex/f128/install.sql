@@ -129,6 +129,7 @@ prompt --install
 @@application/shared_components/user_interface/shortcuts/delete_confirm_msg.sql
 @@application/shared_components/security/authentications/google.sql
 @@application/shared_components/security/authentications/application_express_accounts.sql
+@@application/shared_components/plugins/item_type/com_apexbyg_blogspot_codemirror.sql
 @@application/shared_components/plugins/region_type/com_oracle_apex_minicalendar.sql
 @@application/shared_components/plugins/region_type/com_oracle_apex_acl_status.sql
 @@application/shared_components/plugins/region_type/com_oracle_auth_administration.sql

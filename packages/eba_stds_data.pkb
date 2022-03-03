@@ -35,8 +35,9 @@ create or replace package body eba_stds_data is
     begin
         if not is_sample_data_loaded() then
             -- Create a sample standard to hold the tests.
-            insert into eba_stds_standards ( id, name, description )
-            values ( 1, 'Sample Standard', 'A demonstration standard with some example tests.');
+            insert into eba_stds_standards (name, description ) values ('APEX Accessibility Standards', 'These are standards to maintain Accessibility');
+            insert into eba_stds_standards (name, description ) values ('Generic APEX Standards', 'These are best practices that probably apply to any given APEX application');
+            insert into eba_stds_standards (name, description ) values ('Supporting DB Object Standards', 'These tests run against the DB objects and therefore may be hard to associate with a given application. They can be associated with the "Application Standards Tracker" as a hack');
             -- Associate the sample standard with all existing application types.
             insert into eba_stds_standard_type_ref ( id, standard_id, type_id )
             select rownum, 1 standard_id, t.id type_id

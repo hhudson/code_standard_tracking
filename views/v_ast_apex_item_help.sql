@@ -1,4 +1,4 @@
-create or replace force view ast_apex_item_help_vw as
+create or replace force view v_ast_apex_item_help as
 select 
 case when aai.inline_help_text is null
      and  aai.item_help_text is null

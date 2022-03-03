@@ -1,4 +1,4 @@
-create or replace force view ast_apex_app_item_naming_vw as
+create or replace force view v_ast_apex_app_item_naming as
 select 
 case when item_name like 'G_%'
      then 'Y'

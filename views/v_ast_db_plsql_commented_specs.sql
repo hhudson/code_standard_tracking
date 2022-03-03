@@ -1,5 +1,5 @@
 
-create or replace force view ast_db_commented_specs_vw as
+create or replace force view v_ast_db_plsql_commented_specs as
 with proc_declrtns as (
     select line, name, object_name
     from user_identifiers
@@ -9,15 +9,17 @@ with proc_declrtns as (
     order by object_name, line, name)
 select 
 case when trim(us.text) = '------------------------------------------------------------------------------'
-     then 'Y'
-     else 'N'
-     end as pass_fail,     
-apex_string.format('%0:%1:%2', pd.object_name, us.type, pd.line) reference_code,
-pd.name,
+     then null
+     else 'This procedure appears to be missing a comment or the comment is incorrectly formatted.'
+     end as issue,   
+pd.name proc_name,
 pd.object_name,
-pd.line
+us.type object_type,
+pd.line,
+us.text code,
+'Verifying procedures have comments in package specs' check_type
 from user_source us 
 inner join proc_declrtns pd on  us.type = 'PACKAGE'
                             and us.name = pd.object_name
                             and us.line = (pd.line - 1)
-order by pd.object_name, pd.line
+order by pd.object_name, pd.line;
