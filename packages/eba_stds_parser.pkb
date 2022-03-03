@@ -210,8 +210,8 @@ create or replace package body eba_stds_parser as
     function build_link( p_test_id in number, p_application_id in number, p_param in varchar2 )
             return varchar2 is
 
-        l_scope logger_logs.scope%type := gc_scope_prefix || 'build_link';
-        l_params logger.tab_param;
+        l_scope varchar2(50) := gc_scope_prefix || 'build_link';
+        l_debug_template varchar2(4000) := l_scope||' %0 %1 %2 %3 %4 %5 %6 %7 %8 %9 %10';
 
         l_app number;
         l_page number;
@@ -219,13 +219,56 @@ create or replace package body eba_stds_parser as
         l_link varchar2(4000) := null;
         l_version number;
         l_url_params apex_t_varchar2;
-        l_object_type varchar2(50);
-    begin
-        logger.append_param(l_params, 'p_test_id', p_test_id);
-        logger.append_param(l_params, 'p_application_id', p_application_id);
-        logger.append_param(l_params, 'p_param', p_param);
-        logger.log('START', l_scope, null, l_params);
+        
 
+            procedure link_to_source_code is 
+            l_object_name user_objects.object_name%type;
+            l_object_type user_objects.object_type%type;
+            l_line_number user_source.line%type;
+            l_object_id   user_objects.object_id%type;
+            begin
+                l_app := 4500;
+                    
+                l_url_params := apex_string.split(p_param, ':');
+                l_object_name := l_url_params(1);
+                l_object_type := l_url_params(2);
+                l_line_number := l_url_params(3);
+
+                l_page := case when 1=1
+                                then 1001
+                                when l_object_type = 'FUNCTION'
+                                then 2250
+                                when l_object_type like 'PACKAGE%'
+                                then 2300
+                                else 1001
+                                end;
+                
+                select object_id
+                into l_object_id
+                from user_objects
+                where object_type = l_object_type
+                and object_name = l_object_name;
+
+                apex_debug.info(l_debug_template, 'l_object_name', l_object_name, 'l_object_type', l_object_type,'l_line_number', l_line_number, 'l_object_id', l_object_id);
+
+                --4500:1001:5417996368993::::OB_CURRENT_TYPE:PACKAGE
+                l_link := apex_string.format(p_message => '::::OB_SCHEMA,OB_CURRENT_TYPE,OB_FIND,OB_OBJECT_NAME,OBJECT_ID,OBJECT_NAME'||
+                                                                ':%3,%4,%5,%0,%1,%2',
+                -- l_link := apex_string.format(p_message => '::::OBJECT_ID:%1',
+                                                p0 => case when l_object_type = 'PACKAGE BODY'
+                                                        then 'PACKAGE'
+                                                        else l_object_type
+                                                        end,
+                                                p1 => l_object_id,
+                                                p2 => l_object_name,
+                                                p3 => 'ILA',
+                                                p4 => l_object_type,
+                                                p5 => l_object_name
+                                                );
+                apex_debug.message(p_message => l_debug_template, p0 => 'l_link', p1 => l_link, p_level => apex_debug.c_log_level_warn, p_force => true);
+            end link_to_source_code;
+    begin
+        apex_debug.message(l_debug_template,'START', 'p_test_id', p_test_id, 'p_application_id', p_application_id, 'p_param', p_param);
 
         if l_builder_session is null then
             -- Not logged in to the builder; bail out.
@@ -240,7 +283,7 @@ create or replace package body eba_stds_parser as
             l_page := 4500;
         end if;
         for c1 in ( select link_type from eba_stds_standard_tests where id = p_test_id ) loop
-            logger.log('link_type :', l_scope, c1.link_type);
+            apex_debug.message(p_message => l_debug_template, p0 => 'link_type', p1 => c1.link_type, p_level => apex_debug.c_log_level_warn, p_force => true);
             case c1.link_type
             when 'APPLICATION' then
                 l_app := 4000;
@@ -323,20 +366,7 @@ create or replace package body eba_stds_parser as
                 l_link := ':::4050,4052:FB_FLOW_ID,F4000_P4052_ID:'
                     ||p_application_id||','||p_param;
             when 'SOURCE_CODE' then
-                l_app := 4500;
-                l_page := 1001;
-                
-                l_url_params := apex_string.split(p_param, ':');
-                logger.append_param(l_params, 'object name', l_url_params(1));
-                logger.append_param(l_params, 'object type', l_url_params(2));
-                logger.append_param(l_params, 'line number', l_url_params(3));
-                --4500:1001:5417996368993::::OB_CURRENT_TYPE:PACKAGE
-                l_link := apex_string.format(p_message => '::::OB_CURRENT_TYPE:%0',
-                                             p0 => case when l_url_params(2) = 'PACKAGE BODY'
-                                                        then 'PACKAGE'
-                                                        else l_url_params(2)
-                                                        end);
-                logger.log('. l_link:', l_scope, l_link, l_params);
+                link_to_source_code;
             else
                 -- Someone tried to link to a component we don't support yet.
                 null;
@@ -348,7 +378,7 @@ create or replace package body eba_stds_parser as
         return l_link;
 
     exception when others then 
-        logger.log_error('Unhandled Exception', l_scope, 'yo', l_params); 
+        apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4000);
         raise;
     end build_link;
 end eba_stds_parser;

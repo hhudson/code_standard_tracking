@@ -1,9 +1,9 @@
-create or replace force view ast_app_item_naming_vw as
+create or replace force view ast_apex_app_item_naming_vw as
 select 
 case when item_name like 'G_%'
-            then 'Y'
-            else 'N'
-            end as pass_fail,
+     then 'Y'
+     else 'N'
+     end as pass_fail,
 application_item_id,
 application_id, 
 application_name, 

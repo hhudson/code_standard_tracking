@@ -13,3 +13,5 @@ apexcl.config.json
 
 # Build - Ignore all config files
 scripts/user-config.sh
+/scratch
+/scratchwork

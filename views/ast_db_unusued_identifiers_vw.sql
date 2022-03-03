@@ -1,4 +1,4 @@
-create or replace force view ast_unusued_identifiers_vw as
+create or replace force view ast_db_unusued_identifiers_vw as
   with declared_ids  
         AS (select object_name  
                  , object_type  
@@ -22,13 +22,13 @@ case when uc.signature is not null
      then 'Y'
      else 'N'
      end as pass_fail,
-    apex_string.format('%0:%1:%2', di.object_name, di.object_type, di.line) reference_code,
-    di.object_name, 
-    di.object_type, 
-    di.name, 
-    di.type,
-    di.line
-  from declared_ids di
-  left join used_count uc on  di.signature = uc.signature
-  order by di.object_name, di.object_type, di.name, di.type
+apex_string.format('%0:%1:%2', di.object_name, di.object_type, di.line) reference_code,
+di.object_name, 
+di.object_type, 
+di.name, 
+di.type,
+di.line
+from declared_ids di
+left join used_count uc on  di.signature = uc.signature
+order by di.object_name, di.object_type, di.name, di.type
 ;

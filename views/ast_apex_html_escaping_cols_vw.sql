@@ -1,4 +1,4 @@
-create or replace force view ast_html_escaping_cols_vw as
+create or replace force view ast_apex_html_escaping_cols_vw as
 select 
 case when display_text_as = 'WITHOUT_MODIFICATION'
      then 'N'
@@ -14,10 +14,11 @@ report_label,
 'IR' report_type
 from apex_application_page_ir_col  
 union all
-select case when escape_on_http_output ='Yes'
-            then 'Y'
-            else 'N'
-            end as pass_fail, 
+select 
+case when escape_on_http_output ='Yes'
+     then 'Y'
+     else 'N'
+     end as pass_fail, 
 region_id, 
 application_id, 
 application_name,

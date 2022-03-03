@@ -1,8 +1,9 @@
-create or replace force view ast_page_item_naming_vw as
-select case when item_name like 'P'||page_id||'_%'
-            then 'Y'
-            else 'N'
-            end as pass_fail,
+create or replace force view ast_apex_page_item_naming_vw as
+select 
+case when item_name like 'P'||page_id||'_%'
+     then 'Y'
+     else 'N'
+     end as pass_fail,
 item_id, 
 item_name, 
 application_name, 

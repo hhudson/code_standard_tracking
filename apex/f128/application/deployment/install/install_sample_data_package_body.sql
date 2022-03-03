@@ -28,6 +28,8 @@ wwv_flow_api.create_install_script(
 '                values (2, 20, ''Information Technology'');',
 '            insert into eba_stds_types (id, display_sequence, name)',
 '                values (3, 30, ''Engineering'');',
+'            insert into eba_stds_types (id, display_sequence, name)',
+'                values (3, 30, ''Meta'');',
 '',
 '            insert into eba_stds_app_statuses (id, display_sequence, name)',
 '                values (1, 10,''Test Application'');',
