@@ -7,7 +7,7 @@ case when aap.page_requires_authentication = 'Yes'
      end as pass_fail, 
 aap.page_id, 
 aap.page_name, 
-aap.page_access_protectåion, 
+aap.page_access_protection, 
 aap.page_mode,
 aap.page_requires_authentication,
 aap.application_id

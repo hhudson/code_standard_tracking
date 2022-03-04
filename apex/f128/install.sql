@@ -2,7 +2,6 @@ prompt --install
 @@application/set_environment.sql
 @@application/delete_application.sql
 @@application/create_application.sql
-@@application/shared_components/credentials/google_authentication.sql
 @@application/shared_components/navigation/lists/navigation.sql
 @@application/shared_components/navigation/lists/navigation_bar.sql
 @@application/shared_components/navigation/lists/automated_testing_job.sql
@@ -127,7 +126,6 @@ prompt --install
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
 @@application/shared_components/user_interface/shortcuts/delete_confirm_msg.sql
-@@application/shared_components/security/authentications/google.sql
 @@application/shared_components/security/authentications/application_express_accounts.sql
 @@application/shared_components/plugins/item_type/com_apexbyg_blogspot_codemirror.sql
 @@application/shared_components/plugins/region_type/com_oracle_apex_minicalendar.sql
@@ -189,6 +187,8 @@ prompt --install
 @@application/deployment/definition.sql
 @@application/deployment/install/upgrade_drop_files_table.sql
 @@application/deployment/install/install_set_plscope_settings.sql
+@@application/deployment/install/install_compile_for_plscope.sql
+@@application/deployment/install/install_additional_ast_views.sql
 @@application/deployment/install/upgrade_table_modifications_for_test_types.sql
 @@application/deployment/install/install_eba_stds_spec.sql
 @@application/deployment/install/upgrade_test_validations_table.sql
@@ -251,7 +251,6 @@ prompt --install
 @@application/deployment/install/install_export_package.sql
 @@application/deployment/install/install_export_package_body.sql
 @@application/deployment/install/install_set_first_run_preference.sql
-@@application/deployment/install/install_ast_views.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql
 @@application/end_environment.sql

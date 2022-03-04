@@ -18,7 +18,9 @@ In this repo, I have included a modified copy of the [Application Standards Trac
 
 
 ## How to use PLScope
-
+```
+ALTER SESSION SET PLSCOPE_SETTINGS = 'IDENTIFIERS:ALL';
+```
 Plscope creates dba/all/user_identfiers (since 11.1) and in dba/all/user_statements since 12.2
 ```
 dbms_utility.compile_schema(schema => user, compile_all => true);
@@ -29,3 +31,6 @@ rename views
 legacy feature
 consolidate views
 build data into supporting objects
+
+## fixed a bug
+set session state protection to 'unrestricted' for both P19_VALIDATE and P20_VALIDATE

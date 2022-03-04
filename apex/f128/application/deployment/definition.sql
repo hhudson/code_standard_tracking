@@ -92,7 +92,22 @@ wwv_flow_api.create_install(
 'drop package  eba_stds_fw;',
 'drop package  eba_stds_security;',
 'drop package  eba_stds_data;',
-''))
+'',
+'drop view v_ast_apex_accessibility_item_label;',
+'drop view v_ast_apex_accessibility_theme;',
+'drop view v_ast_apex_app_auth;',
+'drop view v_ast_apex_app_item_naming;',
+'drop view v_ast_apex_html_escaping_cols;',
+'drop view v_ast_apex_item_help;',
+'drop view v_ast_apex_page_auth;',
+'drop view v_ast_apex_page_help;',
+'drop view v_ast_apex_page_item_naming;',
+'drop view v_ast_db_plsql_all;',
+'drop view v_ast_db_plsql_commented_specs;',
+'drop view v_ast_db_plsql_deprecated_code;',
+'drop view v_ast_db_plsql_duplicate_statements;',
+'drop view v_ast_db_plsql_identifier_naming;',
+'drop view v_ast_db_plsql_unusued_identifiers;'))
 ,p_required_free_kb=>100
 ,p_required_sys_privs=>'CREATE PROCEDURE:CREATE SEQUENCE:CREATE TABLE:CREATE TRIGGER:CREATE TYPE :CREATE VIEW'
 ,p_required_names_available=>'EBA_STDS:EBA_STDS_FW:EBA_STDS_TAGS:EBA_STDS_ACCESS_LEVELS:EBA_STDS_HISTORY:EBA_STDS_TAGS_TYPE_SUM:EBA_STDS_TAGS_SUM:EBA_STDS_NOTIFICATIONS:EBA_STDS_PREFERENCES:EBA_STDS_ERROR_LOOKUP:EBA_STDS_USERS:EBA_STDS_TZ_PREF:EBA_STDS_ERRORS:EBA_STDS_SAMPLE_DATA'

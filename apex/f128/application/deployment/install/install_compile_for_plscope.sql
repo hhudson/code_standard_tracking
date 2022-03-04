@@ -1,7 +1,7 @@
-prompt --application/deployment/install/install_set_plscope_settings
+prompt --application/deployment/install/install_compile_for_plscope
 begin
 --   Manifest
---     INSTALL: INSTALL-Set plscope_settings
+--     INSTALL: INSTALL-compile for plscope
 --   Manifest End
 wwv_flow_api.component_begin (
  p_version_yyyy_mm_dd=>'2021.04.15'
@@ -12,12 +12,15 @@ wwv_flow_api.component_begin (
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_install_script(
- p_id=>wwv_flow_api.id(5226701780355995337)
+ p_id=>wwv_flow_api.id(17659165958269387)
 ,p_install_id=>wwv_flow_api.id(4578904365199564796)
-,p_name=>'Set plscope_settings'
-,p_sequence=>10
+,p_name=>'compile for plscope'
+,p_sequence=>12
 ,p_script_type=>'INSTALL'
-,p_script_clob=>'ALTER SESSION SET PLSCOPE_SETTINGS = ''IDENTIFIERS:ALL'';'
+,p_script_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin   ',
+'    dbms_utility.compile_schema(schema => user, compile_all => true);',
+'end;'))
 );
 wwv_flow_api.component_end;
 end;
