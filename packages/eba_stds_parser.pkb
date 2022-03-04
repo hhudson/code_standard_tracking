@@ -378,5 +378,45 @@ create or replace package body eba_stds_parser as
         apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4000);
         raise;
     end build_link;
+
+    procedure assert_exception (
+                p_result_identifier in eba_stds_test_validations.result_identifier%type,
+                p_test_id           in eba_stds_test_validations.test_id%type,
+                p_app_id            in eba_stds_test_validations.application_id%type
+                )
+    is 
+        l_scope varchar2(50) := gc_scope_prefix || 'assert_exception';
+        l_debug_template varchar2(4000) := l_scope||' %0 %1 %2 %3 %4 %5 %6 %7 %8 %9 %10';
+    begin
+        apex_debug.message(l_debug_template,'START', 'p_result_identifier', p_result_identifier, 'p_test_id', p_test_id, 'p_app_id', p_app_id);
+    
+        if substr(p_result_identifier,1,1) = '+' then
+            merge into eba_stds_test_validations dest
+                using ( select 
+                            p_test_id test_id,
+                            p_app_id application_id,
+                            substr(p_result_identifier,2) result_identifier
+                        from dual ) src
+                on ( dest.test_id = src.test_id
+                    and dest.application_id = src.application_id
+                    and dest.result_identifier = src.result_identifier
+                )
+            when matched then
+                update set dest.false_positive_yn = 'Y'
+            when not matched then
+                insert ( test_id, application_id, result_identifier, false_positive_yn )
+                values ( src.test_id, src.application_id, src.result_identifier, 'Y' );
+        else
+            update eba_stds_test_validations tv
+            set tv.false_positive_yn = 'N'
+            where tv.test_id = p_test_id
+                and tv.application_id = p_app_id
+                and tv.result_identifier = substr(p_result_identifier,2);
+        end if;
+
+    exception when others then
+        apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4000);
+        raise;
+    end assert_exception;
 end eba_stds_parser;
 /

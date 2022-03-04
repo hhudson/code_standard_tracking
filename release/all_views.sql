@@ -18,13 +18,15 @@ prompt @../views/v_ast_apex_page_help.sql
 @../views/v_ast_apex_page_help.sql
 prompt @../views/v_ast_apex_page_item_naming.sql
 @../views/v_ast_apex_page_item_naming.sql
-prompt @../views/v_ast_db_commented_specs.sql
-@../views/v_ast_db_commented_specs.sql
-prompt @../views/v_ast_db_deprecated_code.sql
-@../views/v_ast_db_deprecated_code.sql
-prompt @../views/v_ast_db_duplicate_statements.sql
-@../views/v_ast_db_duplicate_statements.sql
+prompt @../views/v_ast_db_plsql_all.sql
+@../views/v_ast_db_plsql_all.sql
+prompt @../views/v_ast_db_plsql_commented_specs.sql
+@../views/v_ast_db_plsql_commented_specs.sql
+prompt @../views/v_ast_db_plsql_deprecated_code.sql
+@../views/v_ast_db_plsql_deprecated_code.sql
+prompt @../views/v_ast_db_plsql_duplicate_statements.sql
+@../views/v_ast_db_plsql_duplicate_statements.sql
 prompt @../views/v_ast_db_plsql_identifier_naming.sql
 @../views/v_ast_db_plsql_identifier_naming.sql
-prompt @../views/v_ast_db_unusued_identifiers.sql
-@../views/v_ast_db_unusued_identifiers.sql
+prompt @../views/v_ast_db_plsql_unusued_identifiers.sql
+@../views/v_ast_db_plsql_unusued_identifiers.sql

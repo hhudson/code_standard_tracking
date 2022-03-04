@@ -12,6 +12,12 @@ wwv_flow_api.component_begin (
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_build_option(
+ p_id=>wwv_flow_api.id(17650670224690980)
+,p_build_option_name=>'DEV_ONLY'
+,p_build_option_status=>'EXCLUDE'
+,p_default_on_export=>'EXCLUDE'
+);
+wwv_flow_api.create_build_option(
  p_id=>wwv_flow_api.id(1999777641879314944)
 ,p_build_option_name=>'Link to Builder'
 ,p_build_option_status=>'INCLUDE'

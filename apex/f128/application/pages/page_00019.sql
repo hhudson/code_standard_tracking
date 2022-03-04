@@ -30,7 +30,7 @@ wwv_flow_api.create_page(
 ,p_protection_level=>'C'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220223175041'
+,p_last_upd_yyyymmddhh24miss=>'20220304152332'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(1544635702724834143)
@@ -1134,23 +1134,6 @@ wwv_flow_api.create_page_da_event(
 ,p_security_scheme=>wwv_flow_api.id(5057645559768553539)
 );
 wwv_flow_api.create_page_da_action(
- p_id=>wwv_flow_api.id(17289372311893301)
-,p_event_id=>wwv_flow_api.id(622671738014120619)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'apex.debug.log(''set valid > validate:'', ',
-'               apex.item(''P19_VALIDATE'').getValue(),',
-'               ''> test id'',',
-'               apex.item(''P19_TEST_ID'').getValue(),',
-'               ''> app id'',',
-'               apex.item(''P19_APPLICATION_ID'').getValue()',
-'               );'))
-,p_server_condition_type=>'NEVER'
-);
-wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(622671896558120620)
 ,p_event_id=>wwv_flow_api.id(622671738014120619)
 ,p_event_result=>'TRUE'
@@ -1158,28 +1141,11 @@ wwv_flow_api.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'if substr(:P19_VALIDATE,1,1) = ''+'' then',
-'    merge into eba_stds_test_validations dest',
-'        using ( select :P19_TEST_ID test_id,',
-'                    :P19_APPLICATION_ID application_id,',
-'                    substr(:P19_VALIDATE,2) result_identifier',
-'                from dual ) src',
-'        on ( dest.test_id = src.test_id',
-'            and dest.application_id = src.application_id',
-'            and dest.result_identifier = src.result_identifier',
-'           )',
-'    when matched then',
-'        update set dest.false_positive_yn = ''Y''',
-'    when not matched then',
-'        insert ( test_id, application_id, result_identifier, false_positive_yn )',
-'        values ( src.test_id, src.application_id, src.result_identifier, ''Y'' );',
-'else',
-'    update eba_stds_test_validations tv',
-'    set tv.false_positive_yn = ''N''',
-'    where tv.test_id = :P19_TEST_ID',
-'        and tv.application_id = :P19_APPLICATION_ID',
-'        and tv.result_identifier = substr(:P19_VALIDATE,2);',
-'end if;'))
+'eba_stds_parser.assert_exception (',
+'        p_result_identifier => :P19_VALIDATE,',
+'        p_test_id           => :P19_TEST_ID,',
+'        p_app_id            => :P19_APPLICATION_ID',
+'        );'))
 ,p_attribute_02=>'P19_VALIDATE,P19_TEST_ID,P19_APPLICATION_ID'
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'

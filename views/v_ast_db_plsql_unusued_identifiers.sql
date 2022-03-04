@@ -16,7 +16,7 @@ with  declared_ids
                   where usage = 'REFERENCE'
                   group by signature)  
 select 
-case when uc.signature is not null
+case when uc.signature is null
      then 'This identifier has been declared but is not referenced anywhere. Please delete.'
      end as issue,
 di.object_name, 

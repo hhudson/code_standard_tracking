@@ -30,6 +30,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_text=>'Contribute'
 ,p_list_item_link_target=>'https://github.com/hhudson/code_standard_tracking'
 ,p_list_item_icon=>'fa-coffee'
+,p_required_patch=>wwv_flow_api.id(17650670224690980)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(

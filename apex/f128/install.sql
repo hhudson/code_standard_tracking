@@ -251,6 +251,7 @@ prompt --install
 @@application/deployment/install/install_export_package.sql
 @@application/deployment/install/install_export_package_body.sql
 @@application/deployment/install/install_set_first_run_preference.sql
+@@application/deployment/install/install_ast_views.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql
 @@application/end_environment.sql
