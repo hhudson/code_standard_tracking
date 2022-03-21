@@ -27,10 +27,10 @@ dbms_utility.compile_schema(schema => user, compile_all => true);
 ```
 
 ## todo
-rename views
-legacy feature
+bulk legacy feature
 consolidate views
 build data into supporting objects
+restrict apps to current workspace
 
 ## fixed a bug
 set session state protection to 'unrestricted' for both P19_VALIDATE and P20_VALIDATE
