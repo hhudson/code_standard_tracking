@@ -2,6 +2,8 @@
 -- Automated listing for views
 prompt @../views/v_ast_apex_accessibility_item_label.sql
 @../views/v_ast_apex_accessibility_item_label.sql
+prompt @../views/v_ast_apex_accessibility_page_title.sql
+@../views/v_ast_apex_accessibility_page_title.sql
 prompt @../views/v_ast_apex_accessibility_theme.sql.sql
 @../views/v_ast_apex_accessibility_theme.sql.sql
 prompt @../views/v_ast_apex_app_auth.sql
@@ -18,6 +20,16 @@ prompt @../views/v_ast_apex_page_help.sql
 @../views/v_ast_apex_page_help.sql
 prompt @../views/v_ast_apex_page_item_naming.sql
 @../views/v_ast_apex_page_item_naming.sql
+prompt @../views/v_ast_db_plsql_1_commented_specs.sql
+@../views/v_ast_db_plsql_1_commented_specs.sql
+prompt @../views/v_ast_db_plsql_2_deprecated_code.sql
+@../views/v_ast_db_plsql_2_deprecated_code.sql
+prompt @../views/v_ast_db_plsql_3_duplicate_statements.sql
+@../views/v_ast_db_plsql_3_duplicate_statements.sql
+prompt @../views/v_ast_db_plsql_4_identifier_naming.sql
+@../views/v_ast_db_plsql_4_identifier_naming.sql
+prompt @../views/v_ast_db_plsql_5_unusued_identifiers.sql
+@../views/v_ast_db_plsql_5_unusued_identifiers.sql
 prompt @../views/v_ast_db_plsql_all.sql
 @../views/v_ast_db_plsql_all.sql
 prompt @../views/v_ast_db_plsql_commented_specs.sql
@@ -30,3 +42,5 @@ prompt @../views/v_ast_db_plsql_identifier_naming.sql
 @../views/v_ast_db_plsql_identifier_naming.sql
 prompt @../views/v_ast_db_plsql_unusued_identifiers.sql
 @../views/v_ast_db_plsql_unusued_identifiers.sql
+prompt @../views/v_eba_stds_standard_tests.sql
+@../views/v_eba_stds_standard_tests.sql

@@ -1,3 +1,4 @@
+set define off
 create or replace package body eba_stds_parser as
 
     gc_scope_prefix   constant varchar2(31) := lower($$plsql_unit) || '.';
