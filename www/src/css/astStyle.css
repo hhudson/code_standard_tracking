@@ -1,0 +1,20 @@
+.t-Button--disabled
+        {
+        cursor: not-allowed;
+        pointer-events: none;
+
+        /*Button disabled - CSS color class*/
+        color: #c0c0c0;
+        background-color: #ffffff;
+
+        }
+
+.hide
+        {
+                visibility: hidden;
+        }
+
+.show
+        {
+                visibility: show;
+        }

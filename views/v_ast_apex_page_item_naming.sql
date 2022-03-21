@@ -5,10 +5,11 @@ case when pi.item_name like 'P'||pi.page_id||'_%'
      then 'Y'
      else 'N'
      end as pass_fail,
+apex_string.format('%0:%1', pi.application_id, pi.item_id) reference_code,
+pi.application_id, 
 pi.item_id, 
 pi.item_name, 
 pi.application_name, 
-pi.application_id, 
 pi.page_id, 
 pi.page_name, 
 pi.region

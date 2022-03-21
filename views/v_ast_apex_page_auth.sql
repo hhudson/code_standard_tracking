@@ -5,12 +5,13 @@ case when aap.page_requires_authentication = 'Yes'
      then 'N'
      else 'Y'
      end as pass_fail, 
+apex_string.format('%0:%1', aap.application_id, aap.page_id) reference_code,
+aap.application_id,
 aap.page_id, 
 aap.page_name, 
 aap.page_access_protection, 
 aap.page_mode,
-aap.page_requires_authentication,
-aap.application_id
+aap.page_requires_authentication
 from apex_application_pages aap
 order by aap.application_id, aap.page_id
 ;
