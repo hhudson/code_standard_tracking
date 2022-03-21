@@ -8,12 +8,12 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_page(
  p_id=>42
-,p_user_interface_id=>wwv_flow_api.id(5500009558737435667)
+,p_user_interface_id=>wwv_flow_api.id(5518741433308135589)
 ,p_name=>'Activity Calendar'
 ,p_alias=>'ACTIVITY-CALENDAR'
 ,p_step_title=>'Activity Calendar'
@@ -21,7 +21,7 @@ wwv_flow_api.create_page(
 ,p_warn_on_unsaved_changes=>'N'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'ON'
-,p_group_id=>wwv_flow_api.id(5673107671636330617)
+,p_group_id=>wwv_flow_api.id(5691839546207030539)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_help_text=>'This is a monthly calendar of application activity, reporting distinct users and their total page views by day. Click the <strong><</strong> button to go to the previous month and the <strong>></strong> button to go forward a month. Switch between th'
@@ -29,11 +29,11 @@ wwv_flow_api.create_page(
 ,p_last_upd_yyyymmddhh24miss=>'20200116130021'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(3865388017802644085)
+ p_id=>wwv_flow_api.id(3884119892373344007)
 ,p_plug_name=>'Page View Calendar'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_api.id(4344962714591702939)
+,p_plug_template=>wwv_flow_api.id(4363694589162402861)
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'BODY'
@@ -60,16 +60,16 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_23=>'3'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(7693684968893438479)
+ p_id=>wwv_flow_api.id(7712416843464138401)
 ,p_plug_name=>'Activity Calendar'
 ,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_api.id(4344978859542702967)
+,p_plug_template=>wwv_flow_api.id(4363710734113402889)
 ,p_plug_display_sequence=>20
 ,p_plug_display_point=>'REGION_POSITION_01'
-,p_menu_id=>wwv_flow_api.id(8755843796947506214)
+,p_menu_id=>wwv_flow_api.id(8774575671518206136)
 ,p_plug_source_type=>'NATIVE_BREADCRUMB'
-,p_menu_template_id=>wwv_flow_api.id(4344994234355703018)
+,p_menu_template_id=>wwv_flow_api.id(4363726108926402940)
 );
 wwv_flow_api.component_end;
 end;

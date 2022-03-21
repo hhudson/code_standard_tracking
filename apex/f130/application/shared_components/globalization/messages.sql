@@ -8,7 +8,7 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 null;
@@ -21,11 +21,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7609629363808380573)
+ p_id=>wwv_flow_api.id(7628361238379080495)
 ,p_name=>'1_DAY_LEFT'
 ,p_message_text=>'1 day left'
 );
@@ -39,21 +39,21 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7620765377785549186)
+ p_id=>wwv_flow_api.id(7639497252356249108)
 ,p_name=>'ABOUT_THIS_APPLICATION'
 ,p_message_text=>'About this Application'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5040269239023821602)
+ p_id=>wwv_flow_api.id(5059001113594521524)
 ,p_name=>'ABOUT_TO_CREATE'
 ,p_message_text=>'Please confirm adding the following %0 <strong>%1</strong> user(s) to your access control list.'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5040269461223826591)
+ p_id=>wwv_flow_api.id(5059001335794526513)
 ,p_name=>'ABOUT_TO_CREATE_WITH_INVALIDS'
 ,p_message_text=>'Please confirm adding the following %0 <strong>%1</strong> user(s) to your access control list. Note that %2 string(s) were invalid usernames.'
 );
@@ -66,11 +66,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7551556365203006050)
+ p_id=>wwv_flow_api.id(7570288239773705972)
 ,p_name=>'ACCESS_CONTROL_INFO'
 ,p_message_text=>'When Access Control is enabled, Administrators have the ability to restrict access to certain application features, for authenticated users. This application supports the following 3 access levels; Reader, Contributor and Administrator. Readers have '
 ||'read-only access and can also view reports. Contributors can additionally create, edit, delete content.  Administrators, in addition to Contributor''s capability, can also perform application administration, including configuration of access control, '
@@ -86,11 +86,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7551556572821008243)
+ p_id=>wwv_flow_api.id(7570288447391708165)
 ,p_name=>'ACL_CONFIGURATION_INFO'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p><b>Enabling Access Control</b> means that access to the application and its features are controlled by the current <b>Access Control List</b>, as defined by the application administrator. This application has 3 access levels available that can be '
@@ -103,22 +103,22 @@ wwv_flow_api.create_message(
 '<p>Note: Irrespective of whether Access Control is enabled or disabled, a user still has to authenticate successfully into the application.</p>'))
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4423927719079046946)
+ p_id=>wwv_flow_api.id(4442659593649746868)
 ,p_name=>'ACL_DISABLED'
 ,p_message_text=>'<p>All users are currently <strong>Administrators</strong>. Please enable Access Control to restrict user access to this application.</p>'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4423927522745045176)
+ p_id=>wwv_flow_api.id(4442659397315745098)
 ,p_name=>'ACL_ENABLED'
 ,p_message_text=>'<p>Only users defined in the Access Control List have access to this application.</p>'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4423927326627043387)
+ p_id=>wwv_flow_api.id(4442659201197743309)
 ,p_name=>'ACL_PUBLIC_CONTRIBUTE'
 ,p_message_text=>'<p>All authenticated users have <strong>Reader</strong> and <strong>Contributor</strong> access.</p><p>Administrators are restricted by the Access Control List.</p>'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4423927130078041816)
+ p_id=>wwv_flow_api.id(4442659004648741738)
 ,p_name=>'ACL_PUBLIC_READONLY'
 ,p_message_text=>'<p>All authenticated users have <strong>Reader</strong> access.</p><p>Contributors and Administrators are restricted by the Access Control List.</p>'
 );
@@ -131,11 +131,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7620764662547544789)
+ p_id=>wwv_flow_api.id(7639496537118244711)
 ,p_name=>'ADDITIONAL_INFORMATION'
 ,p_message_text=>'Additional Information'
 );
@@ -149,11 +149,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7228149868985428230)
+ p_id=>wwv_flow_api.id(7246881743556128152)
 ,p_name=>'ADMINISTRATION'
 ,p_message_text=>'Administration'
 );
@@ -167,11 +167,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041045442010452445)
+ p_id=>wwv_flow_api.id(5059777316581152367)
 ,p_name=>'ALREADY_IN_ACL'
 ,p_message_text=>'User is already in Access Control List'
 );
@@ -185,11 +185,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4423926933097040397)
+ p_id=>wwv_flow_api.id(4442658807667740319)
 ,p_name=>'ANY_AUTHENTICATED_USER'
 ,p_message_text=>'Any Authenticated User'
 );
@@ -203,11 +203,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4424372118409218955)
+ p_id=>wwv_flow_api.id(4443103992979918877)
 ,p_name=>'AUTHENTICATION_REQUIRED_PAGES'
 ,p_message_text=>'Login Required Pages'
 );
@@ -221,17 +221,17 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041461155030286699)
+ p_id=>wwv_flow_api.id(5060193029600986621)
 ,p_name=>'BAU_EMAIL_INSTRUCTIONS'
 ,p_message_text=>'Enter or copy and paste email addresses separated by commas, semicolons, or new lines. Note that if you copy and paste email addresses from email messages, extraneous text will be filtered out.  All email users provided will be added as the selected '
 ||'role.  Existing or duplicate email addresses will be ignored.'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041461345109291273)
+ p_id=>wwv_flow_api.id(5060193219679991195)
 ,p_name=>'BAU_STRING_INSTRUCTIONS'
 ,p_message_text=>'Enter or copy and paste usernames separated by commas, semicolons, or whitespace. All usernames provided will be added as the selected role.  Existing or duplicate usernames will be ignored.'
 );
@@ -244,21 +244,21 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7610426671921893836)
+ p_id=>wwv_flow_api.id(7629158546492593758)
 ,p_name=>'DAYS_AGO'
 ,p_message_text=>'%0 days ago'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7609629158613379049)
+ p_id=>wwv_flow_api.id(7628361033184078971)
 ,p_name=>'DAYS_LEFT'
 ,p_message_text=>'%0 days left'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7609629681123385527)
+ p_id=>wwv_flow_api.id(7628361555694085449)
 ,p_name=>'DAYS_OVERDUE'
 ,p_message_text=>'%0 days overdue'
 );
@@ -271,11 +271,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041045963780457567)
+ p_id=>wwv_flow_api.id(5059777838351157489)
 ,p_name=>'DUPLICATE_USER'
 ,p_message_text=>'Duplicate user in list'
 );
@@ -289,11 +289,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7620765073629547983)
+ p_id=>wwv_flow_api.id(7639496948200247905)
 ,p_name=>'GETTING_STARTED'
 ,p_message_text=>'Getting Started'
 );
@@ -307,16 +307,16 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7228145765522427297)
+ p_id=>wwv_flow_api.id(7246877640093127219)
 ,p_name=>'HELP'
 ,p_message_text=>'Help'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5081773551722907614)
+ p_id=>wwv_flow_api.id(5100505426293607536)
 ,p_name=>'HELP_ABOUT'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="aboutApp">',
@@ -326,7 +326,7 @@ wwv_flow_api.create_message(
 '</div>'))
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5081774356670920536)
+ p_id=>wwv_flow_api.id(5100506231241620458)
 ,p_name=>'HELP_FEATURES'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="textRegion">',
@@ -338,7 +338,7 @@ wwv_flow_api.create_message(
 '</div>'))
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5081773746546910002)
+ p_id=>wwv_flow_api.id(5100505621117609924)
 ,p_name=>'HELP_GETTING_STARTED'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="textRegion">',
@@ -369,7 +369,7 @@ wwv_flow_api.create_message(
 '</div>'))
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5086305745564180827)
+ p_id=>wwv_flow_api.id(5105037620134880749)
 ,p_name=>'HELP_SIDEBAR'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<h1 class="appNameHeader">',
@@ -392,7 +392,7 @@ wwv_flow_api.create_message(
 '</ul>'))
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5081774160121918948)
+ p_id=>wwv_flow_api.id(5100506034692618870)
 ,p_name=>'HELP_SUPPORT'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="textRegion">',
@@ -410,11 +410,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7228137562059426258)
+ p_id=>wwv_flow_api.id(7246869436630126180)
 ,p_name=>'LOGIN'
 ,p_message_text=>'Login'
 );
@@ -428,11 +428,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7228141664137426859)
+ p_id=>wwv_flow_api.id(7246873538708126781)
 ,p_name=>'LOGOUT'
 ,p_message_text=>'Logout'
 );
@@ -446,16 +446,16 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041047737038469979)
+ p_id=>wwv_flow_api.id(5059779611609169901)
 ,p_name=>'MISSING_AT_SIGN'
 ,p_message_text=>'Missing @ sign'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041048263336472960)
+ p_id=>wwv_flow_api.id(5059780137907172882)
 ,p_name=>'MISSING_DOT'
 ,p_message_text=>'Missing dot'
 );
@@ -468,11 +468,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7568400373989510215)
+ p_id=>wwv_flow_api.id(7587132248560210137)
 ,p_name=>'MOBILE'
 ,p_message_text=>'Mobile'
 );
@@ -486,41 +486,41 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606821970106023749)
+ p_id=>wwv_flow_api.id(5625553844676723671)
 ,p_name=>'N_DAY'
 ,p_message_text=>'%0 day'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606822167302025050)
+ p_id=>wwv_flow_api.id(5625554041872724972)
 ,p_name=>'N_DAYS'
 ,p_message_text=>'%0 days'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606821576576020768)
+ p_id=>wwv_flow_api.id(5625553451146720690)
 ,p_name=>'N_HOUR'
 ,p_message_text=>'%0 hour'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606821773772022086)
+ p_id=>wwv_flow_api.id(5625553648342722008)
 ,p_name=>'N_HOURS'
 ,p_message_text=>'%0 hours'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606821380458018943)
+ p_id=>wwv_flow_api.id(5625553255028718865)
 ,p_name=>'N_MINUTES'
 ,p_message_text=>'%0 minutes'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606822363421026870)
+ p_id=>wwv_flow_api.id(5625554237991726792)
 ,p_name=>'N_WEEK'
 ,p_message_text=>'%0 week'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5606822559754028526)
+ p_id=>wwv_flow_api.id(5625554434324728448)
 ,p_name=>'N_WEEKS'
 ,p_message_text=>'%0 weeks'
 );
@@ -533,11 +533,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4424371723153216739)
+ p_id=>wwv_flow_api.id(4443103597723916661)
 ,p_name=>'PAGES_WITH_CUSTOM_AUTH'
 ,p_message_text=>'Authorization Protected'
 );
@@ -551,16 +551,16 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4349571834398567172)
+ p_id=>wwv_flow_api.id(4368303708969267094)
 ,p_name=>'PAGE_34_ABOUT'
 ,p_message_text=>'This page shows the details of a specific application--its type, status, and the percentage of automated tests it passes for each relevant standard.'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4349565039958093601)
+ p_id=>wwv_flow_api.id(4368296914528793523)
 ,p_name=>'PAGE_5_ABOUT'
 ,p_message_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p>Use this page to define a standard and the automated tests which help indicate whether or not the standard has been implemented in each relevant application.</p>',
@@ -575,11 +575,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(4424371920996217754)
+ p_id=>wwv_flow_api.id(4443103795566917676)
 ,p_name=>'PUBLIC_PAGES'
 ,p_message_text=>'Public Pages'
 );
@@ -593,11 +593,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7620764866010545781)
+ p_id=>wwv_flow_api.id(7639496740581245703)
 ,p_name=>'STANDARDS'
 ,p_message_text=>'Standards'
 );
@@ -611,11 +611,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(7609628751341376974)
+ p_id=>wwv_flow_api.id(7628360625912076896)
 ,p_name=>'TODAY'
 ,p_message_text=>'Today'
 );
@@ -629,11 +629,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_message(
- p_id=>wwv_flow_api.id(5041047049546464097)
+ p_id=>wwv_flow_api.id(5059778924117164019)
 ,p_name=>'USERNAME_TOO_LONG'
 ,p_message_text=>'Username too long'
 );

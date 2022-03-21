@@ -966,12 +966,79 @@ create or replace package body eba_stds_parser as
             left join eba_stds_test_validations tv on  tv.test_id = :P19_TEST_ID
                                                    and tv.result_identifier = :P19_TEST_ID||':'||ac.c002
             where ac.collection_name = 'EBA_STDS_P19_TEST_RESULTS'
+            and (sa.apex_app_id = :P19_APPLICATION_ID or :P19_APPLICATION_ID is null)
             ~';
     
     exception when others then
             apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4000);
             raise;
     end test_results_sql;
+
+    function test_status_sql return varchar2
+    is 
+    l_scope varchar2(128) := gc_scope_prefix || 'test_status_sql';
+    l_debug_template varchar2(4096) := l_scope||' %0 %1 %2 %3 %4 %5 %6 %7 %8 %9 %10 %11 %12 %13 %14 %15 %16 %17 %18 %19 %20';
+    begin
+        apex_debug.message(l_debug_template,'START');
+
+        return q'~
+        select t.name test_name,
+            s.pass_fail_pct,
+            case
+                when s.pass_fail_pct is null then
+                    'The query for this test is invalid.'
+                when s.pass_fail_pct < 100 then
+                    t.failure_help_text
+                else
+                    null
+            end as message,
+            t.id test_id,
+            a.apex_app_id application_id,
+            case when t.test_type = 'PASS_FAIL' 
+                 then case when tv.false_positive_yn = 'Y' 
+                           then 'Marked as Valid <div style="text-align:center">'||apex_util.get_since(tv.updated)||' by '||apex_escape.html(tv.updated_by)||'</div>'
+                           when s.pass_fail_pct < 100 and nvl(tv.false_positive_yn,'X') <> 'Y' 
+                           then 'Mark as Valid'
+                           end
+                 end as validation_button_message,
+            case when t.test_type = 'PASS_FAIL' 
+                 then case when tv.false_positive_yn = 'Y' 
+                           then
+                                'javascript:$s(''P20_VALIDATE'',''-'||t.id||':'||a.apex_app_id||''');'
+                           when s.pass_fail_pct < 100 and nvl(tv.false_positive_yn,'X') <> 'Y' 
+                           then
+                                'javascript:$s(''P20_VALIDATE'',''+'||t.id||':'||a.apex_app_id||''');'
+                           end
+                 end as validation_javascript,
+            case when t.test_type = 'PASS_FAIL'
+                 then case when s.pass_fail_pct < 100
+                           then 'show'
+                           else 'hide'
+                           end
+                 else 'hide'
+                 end as validation_show_hide,
+            case when t.test_type = 'PASS_FAIL'
+                 then case when tv.false_positive_yn = 'Y' 
+                           then
+                                'success'
+                           when s.pass_fail_pct < 100 and nvl(tv.false_positive_yn,'X') <> 'Y' 
+                           then
+                                'warning'
+                           end
+                 end as validation_style
+        from 
+            eba_stds_standard_statuses s join eba_stds_applications a on a.id = s.application_id
+            inner join eba_stds_standard_tests t on t.id = s.test_id and t.standard_id = s.standard_id
+            left outer join eba_stds_test_validations tv on s.test_id = tv.test_id and a.apex_app_id = tv.application_id
+        where s.application_id = :P20_APPLICATION_ID
+            and s.standard_id = :P20_ID
+        order by t.display_sequence nulls last, lower(t.name)    
+        ~';
+    
+    exception when others then
+        apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4096);
+        raise;
+    end test_status_sql;
 
 
     procedure run_all_tests (p_standard_id in eba_stds_standards.id%type)

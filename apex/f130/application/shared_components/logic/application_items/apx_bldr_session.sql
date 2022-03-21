@@ -8,15 +8,15 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_flow_item(
- p_id=>wwv_flow_api.id(4495251028727236140)
+ p_id=>wwv_flow_api.id(4513982903297936062)
 ,p_name=>'APX_BLDR_SESSION'
 ,p_protection_level=>'I'
 ,p_escape_on_http_output=>'N'
-,p_required_patch=>wwv_flow_api.id(4493671437345691184)
+,p_required_patch=>wwv_flow_api.id(4512403311916391106)
 );
 wwv_flow_api.component_end;
 end;

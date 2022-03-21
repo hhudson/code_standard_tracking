@@ -33,10 +33,10 @@ create or replace package eba_stds_parser authid definer as
                 p_exception_type    in varchar2                                        default g_false_neg
                 );
 
-    function default_application_id  
-        return eba_stds_test_validations.application_id%type deterministic;
     
     function test_results_sql return varchar2;
+
+    function test_status_sql return varchar2;
     
     procedure run_all_tests (p_standard_id in eba_stds_standards.id%type);
 
@@ -46,6 +46,9 @@ create or replace package eba_stds_parser authid definer as
                 p_test_id           in eba_stds_test_validations.test_id%type          default null,
                 p_app_id            in eba_stds_test_validations.application_id%type   default null,
                 p_exception_type    in varchar2                                        default g_false_neg);
+    function default_application_id  
+        return eba_stds_test_validations.application_id%type deterministic;
+
     
 end eba_stds_parser;
 /

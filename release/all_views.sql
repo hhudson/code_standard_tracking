@@ -42,5 +42,9 @@ prompt @../views/v_ast_db_plsql_identifier_naming.sql
 @../views/v_ast_db_plsql_identifier_naming.sql
 prompt @../views/v_ast_db_plsql_unusued_identifiers.sql
 @../views/v_ast_db_plsql_unusued_identifiers.sql
+prompt @../views/v_eba_stds_application_test_pass_fail.sql
+@../views/v_eba_stds_application_test_pass_fail.sql
 prompt @../views/v_eba_stds_standard_tests.sql
 @../views/v_eba_stds_standard_tests.sql
+prompt @../views/v_eba_stds_standards.sql
+@../views/v_eba_stds_standards.sql

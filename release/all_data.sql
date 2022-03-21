@@ -8,6 +8,7 @@
 -- @../data/3_populate_flex_registry.sql
 -- @../data/4_populate_flex_page_map.sql
 -- @../data/5_set_first_run_preference.sql
+@../data/6_add_demo_user.sql
 -- @../data/7_eba_stds_standards.sql
 -- @../data/8_load_eba_stds_app_statuses.sql
 -- @../data/9_eba_stds_standard_tests.sql

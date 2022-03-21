@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2916431860810340515
+,p_default_id_offset=>2935163735381040437
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_authentication(
- p_id=>wwv_flow_api.id(2924195438899903503)
+ p_id=>wwv_flow_api.id(2942927313470603425)
 ,p_name=>'Corp SSO via AuthProxy'
 ,p_scheme_type=>'NATIVE_HTTP_HEADER_VARIABLE'
 ,p_attribute_01=>'X-Oracle-Auth-UID'
