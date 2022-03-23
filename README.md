@@ -6,31 +6,33 @@ In this repo, I am recording methods and queries to track and enforce APEX stand
 
 ## The Application Standards Tracker
 
-In this repo, I have included a modified copy of the [Application Standards Tracker](apex/f128.sql), an application that was formerly included in the APEX Sample App Gallery. I have modified the application to expand it's use to cover enforcing coding standards in the supporting database objects (tables, views, packages, etc).
+In this repo, I have included a modified copy of the [Application Standards Tracker](apex/f130.sql), an application that was formerly included in the APEX Sample App Gallery. I have modified the application to expand it's use to cover enforcing coding standards in the supporting database objects (tables, views, packages, etc).
 
 ### Modifications to support DB object coding standards
 
-1. I added "Meta" as an application type in the eba_stds_types table ("Sample Data Package body" script).
-2. I added "Source Code" to the "TEST LINK TYPES" LOV.
-3. I edited the eba_stds_parser package body to support the "Source Code" link type.
-4. I edited the eba_stds_data package body to seed the application with my default tests.
-5. I imported the [Code Mirror Plugin](https://github.com/mgoricki/apex-plugin-code-editor) for use on page 11.
-
+1. Test assertion queries are now required to be stored as views in the database, instead of as clobs in the eba_stds_standard_tests table. This is a personal preference but has many advantages:
+    - the code can now be studied / referenced / corrected outside of the application (eg, merely accessing this repo in a browser allows you to study them)
+    - asserting the format of the test assertion queries is simpler this way (eg, requiring field names and their order)
+    - reduced risk of SQL injection / XSS attacks from evaluating query stored as a clob
+2. I added "DB Supporting Objects" as an application type in the eba_stds_types table
+3. I added "Database Supporting Object" to the "TEST LINK TYPES" LOV.
 
 ## How to use PLScope
+
+
+PL/Scope creates the following database objects : 
+- dba/all/user_identifiers (since 11.1)
+- dba/all/user_statements since 12.2
+These tables get populated only with the PL/SQL that compiled in sessions which have the following setting:
 ```
 ALTER SESSION SET PLSCOPE_SETTINGS = 'IDENTIFIERS:ALL';
 ```
-Plscope creates dba/all/user_identfiers (since 11.1) and in dba/all/user_statements since 12.2
+In order to compensate for the absence of PL/SQL that may have been compiled in different sessions without this plscope_settings value, it may be necessary to run the following command:
 ```
-dbms_utility.compile_schema(schema => user, compile_all => true);
+begin
+    dbms_utility.compile_schema(schema => user, compile_all => true);
+end;
 ```
-
-## todo
-bulk legacy feature
-consolidate views
-build data into supporting objects
-restrict apps to current workspace
 
 ## fixed a bug
 set session state protection to 'unrestricted' for both P19_VALIDATE and P20_VALIDATE
