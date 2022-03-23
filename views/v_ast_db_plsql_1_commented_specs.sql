@@ -22,4 +22,5 @@ from user_source us
 inner join proc_declrtns pd on  us.type = 'PACKAGE'
                             and us.name = pd.object_name
                             and us.line = (pd.line - 1)
+where us.name not like 'BIN$%'
 order by pd.object_name, pd.line;

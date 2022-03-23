@@ -8,12 +8,12 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_page(
  p_id=>7
-,p_user_interface_id=>wwv_flow_api.id(5518741433308135589)
+,p_user_interface_id=>wwv_flow_api.id(5556384169945677648)
 ,p_name=>'Page Security'
 ,p_alias=>'PAGE-SECURITY'
 ,p_page_mode=>'MODAL'
@@ -22,19 +22,19 @@ wwv_flow_api.create_page(
 ,p_warn_on_unsaved_changes=>'N'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'ON'
-,p_group_id=>wwv_flow_api.id(7570358149140560210)
+,p_group_id=>wwv_flow_api.id(7608000885778102269)
 ,p_page_template_options=>'#DEFAULT#:ui-dialog--stretch:t-Dialog--noPadding'
-,p_required_role=>wwv_flow_api.id(7570270738032629690)
+,p_required_role=>wwv_flow_api.id(7607913474670171749)
 ,p_protection_level=>'C'
 ,p_help_text=>'<p>The Page Privileges report shows the roles required to access each page in this application and which pages do not require authentication (the user to be logged in).  It is organized by Page Group which loosely corresponds to the tab to which the '
 ||'page is associated.</p>'
 ,p_last_upd_yyyymmddhh24miss=>'20200116130021'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5691836329180017264)
+ p_id=>wwv_flow_api.id(5729479065817559323)
 ,p_plug_name=>'Application Page Security'
 ,p_region_template_options=>'#DEFAULT#:t-IRR-region--noBorders'
-,p_plug_template=>wwv_flow_api.id(4363707767176402879)
+,p_plug_template=>wwv_flow_api.id(4401350503813944938)
 ,p_plug_display_sequence=>20
 ,p_plug_new_grid_row=>false
 ,p_plug_new_grid_column=>false
@@ -55,7 +55,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 );
 wwv_flow_api.create_worksheet(
- p_id=>wwv_flow_api.id(5691836548698017264)
+ p_id=>wwv_flow_api.id(5729479285335559323)
 ,p_name=>'Report 1'
 ,p_max_row_count=>'1000000'
 ,p_max_row_count_message=>'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
@@ -78,7 +78,7 @@ wwv_flow_api.create_worksheet(
 ,p_internal_uid=>651425323366710148
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691836634407017265)
+ p_id=>wwv_flow_api.id(5729479371044559324)
 ,p_db_column_name=>'PAGE_ID'
 ,p_display_order=>1
 ,p_column_identifier=>'A'
@@ -89,7 +89,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691836749378017267)
+ p_id=>wwv_flow_api.id(5729479486015559326)
 ,p_db_column_name=>'PAGE_TITLE'
 ,p_display_order=>2
 ,p_column_identifier=>'B'
@@ -99,7 +99,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691836842122017267)
+ p_id=>wwv_flow_api.id(5729479578759559326)
 ,p_db_column_name=>'PAGE_FUNCTION'
 ,p_display_order=>3
 ,p_column_identifier=>'C'
@@ -109,7 +109,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691836955865017267)
+ p_id=>wwv_flow_api.id(5729479692502559326)
 ,p_db_column_name=>'AUTHORIZATION_SCHEME'
 ,p_display_order=>4
 ,p_column_identifier=>'D'
@@ -119,7 +119,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691837044797017267)
+ p_id=>wwv_flow_api.id(5729479781434559326)
 ,p_db_column_name=>'REQUIRES_AUTH'
 ,p_display_order=>5
 ,p_column_identifier=>'E'
@@ -129,7 +129,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691837135554017267)
+ p_id=>wwv_flow_api.id(5729479872191559326)
 ,p_db_column_name=>'PAGE_GROUP'
 ,p_display_order=>6
 ,p_column_identifier=>'F'
@@ -139,7 +139,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_column(
- p_id=>wwv_flow_api.id(5691837252175017267)
+ p_id=>wwv_flow_api.id(5729479988812559326)
 ,p_db_column_name=>'BUILD_OPTION'
 ,p_display_order=>7
 ,p_column_identifier=>'G'
@@ -150,7 +150,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_tz_dependent=>'N'
 );
 wwv_flow_api.create_worksheet_rpt(
- p_id=>wwv_flow_api.id(5691837354242017267)
+ p_id=>wwv_flow_api.id(5729480090879559326)
 ,p_application_user=>'APXWS_DEFAULT'
 ,p_report_seq=>10
 ,p_report_alias=>'6514262'
@@ -172,13 +172,13 @@ wwv_flow_api.create_worksheet_rpt(
 ,p_sort_direction_6=>'ASC'
 );
 wwv_flow_api.create_page_button(
- p_id=>wwv_flow_api.id(5058476098617491786)
+ p_id=>wwv_flow_api.id(5096118835255033845)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_api.id(5691836329180017264)
+,p_button_plug_id=>wwv_flow_api.id(5729479065817559323)
 ,p_button_name=>'RESET'
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_api.id(4363725256240402933)
+,p_button_template_id=>wwv_flow_api.id(4401367992877944992)
 ,p_button_image_alt=>'Reset'
 ,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
 ,p_button_redirect_url=>'f?p=&APP_ID.:&APP_PAGE_ID.:&SESSION.::&DEBUG.:RP,&APP_PAGE_ID.,RIR::'

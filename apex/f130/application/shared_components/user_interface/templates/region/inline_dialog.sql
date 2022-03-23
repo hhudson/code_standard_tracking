@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plug_template(
- p_id=>wwv_flow_api.id(4363703555510402872)
+ p_id=>wwv_flow_api.id(4401346292147944931)
 ,p_layout=>'TABLE'
 ,p_template=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div id="#REGION_STATIC_ID#_parent">',
@@ -41,8 +41,8 @@ wwv_flow_api.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_api.create_plug_tmpl_display_point(
- p_id=>wwv_flow_api.id(3850494126051988293)
-,p_plug_template_id=>wwv_flow_api.id(4363703555510402872)
+ p_id=>wwv_flow_api.id(3888136862689530352)
+,p_plug_template_id=>wwv_flow_api.id(4401346292147944931)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>true

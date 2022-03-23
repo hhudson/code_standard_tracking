@@ -47,7 +47,7 @@ end;
 /
 
 -- Disable APEX apps
-@../scripts/apex_disable.sql &env_apex_app_ids
+-- @../scripts/apex_disable.sql &env_apex_app_ids
 
 
 -- *** END: HEADER SECTION ***

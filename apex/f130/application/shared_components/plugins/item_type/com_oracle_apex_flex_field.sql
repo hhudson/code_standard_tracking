@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(4383680492241268585)
+ p_id=>wwv_flow_api.id(4421323228878810644)
 ,p_plugin_type=>'ITEM TYPE'
 ,p_name=>'COM.ORACLE.APEX.FLEX_FIELD'
 ,p_display_name=>'Flex Field'
@@ -398,8 +398,8 @@ wwv_flow_api.create_plugin(
 ,p_about_url=>'http://apex.oracle.com/plugins'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(4277506545141853595)
-,p_plugin_id=>wwv_flow_api.id(4383680492241268585)
+ p_id=>wwv_flow_api.id(4315149281779395654)
+,p_plugin_id=>wwv_flow_api.id(4421323228878810644)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10

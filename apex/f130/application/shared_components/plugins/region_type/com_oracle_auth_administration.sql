@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(4371254130506819592)
+ p_id=>wwv_flow_api.id(4408896867144361651)
 ,p_plugin_type=>'REGION TYPE'
 ,p_name=>'COM.ORACLE.AUTH_ADMINISTRATION'
 ,p_display_name=>'Authorization Administration'
@@ -128,8 +128,8 @@ wwv_flow_api.create_plugin(
 ,p_about_url=>'http://apex.oracle.com/plugins'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(5382075305506778374)
-,p_plugin_id=>wwv_flow_api.id(4371254130506819592)
+ p_id=>wwv_flow_api.id(5419718042144320433)
+,p_plugin_id=>wwv_flow_api.id(4408896867144361651)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -140,8 +140,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Enter or select the page number which has a report listing the pages within the application and the respective role required to access that page.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(5382075711231778375)
-,p_plugin_id=>wwv_flow_api.id(4371254130506819592)
+ p_id=>wwv_flow_api.id(5419718447869320434)
+,p_plugin_id=>wwv_flow_api.id(4408896867144361651)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -153,8 +153,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Enter the label displayed for pages with no authorization defined.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(5382076196116778375)
-,p_plugin_id=>wwv_flow_api.id(4371254130506819592)
+ p_id=>wwv_flow_api.id(5419718932754320434)
+,p_plugin_id=>wwv_flow_api.id(4408896867144361651)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30
@@ -166,8 +166,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Enter the label displayed for pages that require authentication.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(5382076549417778375)
-,p_plugin_id=>wwv_flow_api.id(4371254130506819592)
+ p_id=>wwv_flow_api.id(5419719286055320434)
+,p_plugin_id=>wwv_flow_api.id(4408896867144361651)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
 ,p_display_sequence=>40

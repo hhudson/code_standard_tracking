@@ -66,28 +66,24 @@ drop package  eba_stds_data;
 -- select apex_string.format('drop view %0;',lower(view_name)) stmt
 -- from user_views
 -- where (lower(view_name) like '%ast%' ) or  (lower(view_name) like 'v_eba%' )
+-- order by view_name
 
-drop view v_ast_db_plsql_commented_specs;
-drop view v_ast_db_plsql_deprecated_code;
-drop view v_ast_db_plsql_duplicate_statements;
-drop view v_ast_db_plsql_identifier_naming;
-drop view v_ast_db_plsql_unusued_identifiers;
-drop view v_eba_stds_standards;
-drop view v_eba_stds_application_test_pass_fail;
+drop view v_ast_apex_accessibility_item_label;
+drop view v_ast_apex_accessibility_page_title;
 drop view v_ast_apex_accessibility_theme;
 drop view v_ast_apex_app_auth;
-drop view v_ast_apex_accessibility_item_label;
 drop view v_ast_apex_app_item_naming;
 drop view v_ast_apex_html_escaping_cols;
 drop view v_ast_apex_item_help;
 drop view v_ast_apex_page_auth;
 drop view v_ast_apex_page_help;
 drop view v_ast_apex_page_item_naming;
-drop view v_ast_db_plsql_all;
-drop view v_ast_apex_accessibility_page_title;
 drop view v_ast_db_plsql_1_commented_specs;
-drop view v_ast_db_plsql_2_deprecated_code;
+drop view v_ast_db_plsql_2_discouraged_code;
 drop view v_ast_db_plsql_3_duplicate_statements;
 drop view v_ast_db_plsql_4_identifier_naming;
 drop view v_ast_db_plsql_5_unusued_identifiers;
+drop view v_ast_db_plsql_all;
+drop view v_eba_stds_application_test_pass_fail;
+drop view v_eba_stds_standards;
 drop view v_eba_stds_standard_tests;

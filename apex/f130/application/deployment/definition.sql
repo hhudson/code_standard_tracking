@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_install(
- p_id=>wwv_flow_api.id(7091530035236640958)
+ p_id=>wwv_flow_api.id(7129172771874183017)
 ,p_welcome_message=>'This application installer will guide you through the process of creating your database objects and seed data.'
 ,p_configuration_message=>'You can configure the following attributes of your application.'
 ,p_build_options_message=>'You can choose to include the following build options.'
@@ -96,30 +96,26 @@ wwv_flow_api.create_install(
 '-- select apex_string.format(''drop view %0;'',lower(view_name)) stmt',
 '-- from user_views',
 '-- where (lower(view_name) like ''%ast%'' ) or  (lower(view_name) like ''v_eba%'' )',
+'-- order by view_name',
 '',
-'drop view v_ast_db_plsql_commented_specs;',
-'drop view v_ast_db_plsql_deprecated_code;',
-'drop view v_ast_db_plsql_duplicate_statements;',
-'drop view v_ast_db_plsql_identifier_naming;',
-'drop view v_ast_db_plsql_unusued_identifiers;',
-'drop view v_eba_stds_standards;',
-'drop view v_eba_stds_application_test_pass_fail;',
+'drop view v_ast_apex_accessibility_item_label;',
+'drop view v_ast_apex_accessibility_page_title;',
 'drop view v_ast_apex_accessibility_theme;',
 'drop view v_ast_apex_app_auth;',
-'drop view v_ast_apex_accessibility_item_label;',
 'drop view v_ast_apex_app_item_naming;',
 'drop view v_ast_apex_html_escaping_cols;',
 'drop view v_ast_apex_item_help;',
 'drop view v_ast_apex_page_auth;',
 'drop view v_ast_apex_page_help;',
 'drop view v_ast_apex_page_item_naming;',
-'drop view v_ast_db_plsql_all;',
-'drop view v_ast_apex_accessibility_page_title;',
 'drop view v_ast_db_plsql_1_commented_specs;',
-'drop view v_ast_db_plsql_2_deprecated_code;',
+'drop view v_ast_db_plsql_2_discouraged_code;',
 'drop view v_ast_db_plsql_3_duplicate_statements;',
 'drop view v_ast_db_plsql_4_identifier_naming;',
 'drop view v_ast_db_plsql_5_unusued_identifiers;',
+'drop view v_ast_db_plsql_all;',
+'drop view v_eba_stds_application_test_pass_fail;',
+'drop view v_eba_stds_standards;',
 'drop view v_eba_stds_standard_tests;'))
 ,p_required_free_kb=>100
 ,p_required_sys_privs=>'CREATE PROCEDURE:CREATE SEQUENCE:CREATE TABLE:CREATE TRIGGER:CREATE TYPE :CREATE VIEW'
