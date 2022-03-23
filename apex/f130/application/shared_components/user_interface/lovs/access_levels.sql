@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list_of_values(
- p_id=>wwv_flow_api.id(7589102954756211539)
+ p_id=>wwv_flow_api.id(7607932367409341993)
 ,p_lov_name=>'ACCESS_LEVELS'
 ,p_lov_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select access_level d, id r',

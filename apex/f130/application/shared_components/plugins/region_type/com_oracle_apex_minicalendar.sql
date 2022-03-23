@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(4388837456212319511)
+ p_id=>wwv_flow_api.id(4407666868865449965)
 ,p_plugin_type=>'REGION TYPE'
 ,p_name=>'COM.ORACLE.APEX.MINICALENDAR'
 ,p_display_name=>'Mini Calendar'
@@ -219,8 +219,8 @@ wwv_flow_api.create_plugin(
 ,p_files_version=>2
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(5244010804258090271)
-,p_plugin_id=>wwv_flow_api.id(4388837456212319511)
+ p_id=>wwv_flow_api.id(5262840216911220725)
+,p_plugin_id=>wwv_flow_api.id(4407666868865449965)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -232,8 +232,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Select the column from the region SQL Query which holds the single date value for the calendar.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(5244011141542090271)
-,p_plugin_id=>wwv_flow_api.id(4388837456212319511)
+ p_id=>wwv_flow_api.id(5262840554195220725)
+,p_plugin_id=>wwv_flow_api.id(4407666868865449965)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -245,8 +245,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Select the column from the region SQL Query which holds the label for the calendar.'
 );
 wwv_flow_api.create_plugin_std_attribute(
- p_id=>wwv_flow_api.id(3801666800230966312)
-,p_plugin_id=>wwv_flow_api.id(4388837456212319511)
+ p_id=>wwv_flow_api.id(3820496212884096766)
+,p_plugin_id=>wwv_flow_api.id(4407666868865449965)
 ,p_name=>'SOURCE_SQL'
 ,p_sql_min_column_count=>1
 ,p_examples=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -266,7 +266,7 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.g_varchar2_table := wwv_flow_api.empty_varchar2_table;
@@ -302,12 +302,12 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(5244012526462090272)
-,p_plugin_id=>wwv_flow_api.id(4388837456212319511)
+ p_id=>wwv_flow_api.id(5262841939115220726)
+,p_plugin_id=>wwv_flow_api.id(4407666868865449965)
 ,p_file_name=>'com_oracle_apex_minicalendar.css'
 ,p_mime_type=>'text/css'
 ,p_file_content=>wwv_flow_api.varchar2_to_blob(wwv_flow_api.g_varchar2_table)

@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_flow_item(
- p_id=>wwv_flow_api.id(2961740939815017286)
+ p_id=>wwv_flow_api.id(2980570352468147740)
 ,p_name=>'G_SUPPORT_SSO_AUTHENTICATED'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'

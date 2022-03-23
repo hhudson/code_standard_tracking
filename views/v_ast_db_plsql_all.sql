@@ -20,7 +20,7 @@ from
     from v_ast_db_plsql_1_commented_specs cs
  union all
  select dc.issue, dc.object_name, dc.object_type, dc.line, dc.code, dc.check_type
-    from v_ast_db_plsql_2_deprecated_code dc
+    from v_ast_db_plsql_2_discouraged_code dc
  union all 
  select ds.issue, ds.object_name, ds.object_type, ds.line, ds.code, ds.check_type
     from v_ast_db_plsql_3_duplicate_statements ds

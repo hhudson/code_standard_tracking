@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(10622265648703360230)
+ p_id=>wwv_flow_api.id(10641095061356490684)
 ,p_plugin_type=>'REGION TYPE'
 ,p_name=>'COM.ORACLE.APEX.TAG_CLOUD'
 ,p_display_name=>'Tag Cloud'
@@ -147,8 +147,8 @@ wwv_flow_api.create_plugin(
 ,p_files_version=>4
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(3608826270213906234)
-,p_plugin_id=>wwv_flow_api.id(10622265648703360230)
+ p_id=>wwv_flow_api.id(3627655682867036688)
+,p_plugin_id=>wwv_flow_api.id(10641095061356490684)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -160,8 +160,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Enter a target page to be called when the user clicks a tag. Use the #TAG# substitution for the tag that is clicked.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(3608826682768906234)
-,p_plugin_id=>wwv_flow_api.id(10622265648703360230)
+ p_id=>wwv_flow_api.id(3627656095422036688)
+,p_plugin_id=>wwv_flow_api.id(10641095061356490684)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -175,8 +175,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_attribute_comment=>'Enter the maximum number of tags to display in the region.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(3608827110521906235)
-,p_plugin_id=>wwv_flow_api.id(10622265648703360230)
+ p_id=>wwv_flow_api.id(3627656523175036689)
+,p_plugin_id=>wwv_flow_api.id(10641095061356490684)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30
@@ -188,8 +188,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Select whether to show the tag count next to the tag.'
 );
 wwv_flow_api.create_plugin_std_attribute(
- p_id=>wwv_flow_api.id(3608828085981906236)
-,p_plugin_id=>wwv_flow_api.id(10622265648703360230)
+ p_id=>wwv_flow_api.id(3627657498635036690)
+,p_plugin_id=>wwv_flow_api.id(10641095061356490684)
 ,p_name=>'SOURCE_SQL'
 ,p_is_required=>false
 ,p_sql_min_column_count=>2
@@ -226,7 +226,7 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.g_varchar2_table := wwv_flow_api.empty_varchar2_table;
@@ -253,12 +253,12 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(3608828775612906236)
-,p_plugin_id=>wwv_flow_api.id(10622265648703360230)
+ p_id=>wwv_flow_api.id(3627658188266036690)
+,p_plugin_id=>wwv_flow_api.id(10641095061356490684)
 ,p_file_name=>'tag_cloud.css'
 ,p_mime_type=>'text/css'
 ,p_file_content=>wwv_flow_api.varchar2_to_blob(wwv_flow_api.g_varchar2_table)

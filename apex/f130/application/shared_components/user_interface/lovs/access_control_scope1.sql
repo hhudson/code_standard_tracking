@@ -8,23 +8,23 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2953977059365452042
+,p_default_id_offset=>2972806472018582496
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list_of_values(
- p_id=>wwv_flow_api.id(3062915864976205530)
+ p_id=>wwv_flow_api.id(3081745277629335984)
 ,p_lov_name=>'ACCESS CONTROL SCOPE1'
-,p_lov_query=>'.'||wwv_flow_api.id(3062915864976205530)||'.'
+,p_lov_query=>'.'||wwv_flow_api.id(3081745277629335984)||'.'
 ,p_location=>'STATIC'
 );
 wwv_flow_api.create_static_lov_data(
- p_id=>wwv_flow_api.id(3062916301841205533)
+ p_id=>wwv_flow_api.id(3081745714494335987)
 ,p_lov_disp_sequence=>1
 ,p_lov_disp_value=>'Readers'
 ,p_lov_return_value=>'PUBLIC_READONLY'
 );
 wwv_flow_api.create_static_lov_data(
- p_id=>wwv_flow_api.id(3062916697352205535)
+ p_id=>wwv_flow_api.id(3081746110005335989)
 ,p_lov_disp_sequence=>2
 ,p_lov_disp_value=>'Contributors'
 ,p_lov_return_value=>'PUBLIC_CONTRIBUTE'

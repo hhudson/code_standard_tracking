@@ -132,8 +132,6 @@ prompt --install
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
 @@application/shared_components/user_interface/shortcuts/delete_confirm_msg.sql
-@@application/shared_components/security/authentications/covid_idp_dms_user.sql
-@@application/shared_components/security/authentications/corp_sso_via_authproxy.sql
 @@application/shared_components/security/authentications/application_express_accounts.sql
 @@application/shared_components/plugins/region_type/com_oracle_apex_minicalendar.sql
 @@application/shared_components/plugins/region_type/com_oracle_apex_acl_status.sql
