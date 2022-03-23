@@ -5,7 +5,7 @@ SCHEMA_NAME=ILA
 # Name of default workspace that applications are associated with
 APEX_WORKSPACE=ILA
 # Comma delimited list of APEX Applications to export. Ex: 100,200
-APEX_APP_IDS=128
+APEX_APP_IDS=130
 
 
 # File extensions
@@ -13,6 +13,7 @@ APEX_APP_IDS=128
 EXT_PACKAGE_SPEC=pks
 EXT_PACKAGE_BODY=pkb
 EXT_VIEW=sql
+EXT_TRIGGER=sql
 
 
 # File Mappings

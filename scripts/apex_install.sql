@@ -7,6 +7,7 @@
 
 set serveroutput on size unlimited;
 set timing off;
+set define on
 
 declare
 begin

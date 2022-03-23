@@ -1,0 +1,28 @@
+create or replace type eba_stds_filter_column_t as object (
+    -- The name of the column in the query.
+    -- If the column name is case sensitive, enclose it in double quotes.
+    query_column varchar2(50),
+    -- The type of the column; used for controlling the search functionality.
+    -- Valid options are: CHAR, VARCHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, NCLOB,
+    -- NUMBER, BINARY_FLOAT, BINARY_DOUBLE, DATE, TIMESTAMP,
+    -- TIMESTAMP WITH TIME ZONE, TIMESTAMP WITH LOCAL TIME ZONE
+    datatype varchar2(30),
+    -- Flag indicating whether or not the column is included in text search.
+    in_text_search_yn varchar2(1),
+    -- If in text search:
+        -- Flag indicating whether an exact match is required ( = vs. like )
+        exact_match_yn varchar2(1),
+        -- Flag for whether the search string is case sensitive for this column.
+        case_sensitive_yn varchar2(1),
+    -- If an LOV applies:
+        -- The header displayed in the filter list.
+        header       varchar2(64),
+        -- The list of values containing the filter options.
+        lov_name     varchar2(256),
+        -- A flag indicating whether the filter applies to the display
+        -- value of the list of values ('D') or the return value ('R').
+        match_column varchar2(1)
+);
+/
+create or replace type eba_stds_filter_col_tbl as table of eba_stds_filter_column_t;
+/

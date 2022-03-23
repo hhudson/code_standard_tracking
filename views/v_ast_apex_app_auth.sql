@@ -1,12 +1,13 @@
 create or replace force view v_ast_apex_app_auth as
 select 
-case when authorization_scheme is null
+case when aa.authorization_scheme is null
     then 'N'
     else 'Y'
     end as pass_fail, 
-application_id, 
-application_name,
-authorization_scheme
-from apex_applications 
-order by  application_id
+aa.application_id reference_code, 
+aa.application_id, 
+aa.application_name,
+aa.authorization_scheme
+from apex_applications aa
+order by  aa.application_id
 ;
