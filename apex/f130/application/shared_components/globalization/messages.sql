@@ -641,3 +641,40 @@ null;
 wwv_flow_api.component_end;
 end;
 /
+begin
+wwv_flow_api.component_begin (
+ p_version_yyyy_mm_dd=>'2021.04.15'
+,p_release=>'21.1.7'
+,p_default_workspace_id=>9690978936188613
+,p_default_application_id=>130
+,p_default_id_offset=>2935163735381040437
+,p_default_owner=>'ILA'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18803046988296680)
+,p_name=>'VIEW_MEETS_CRITERIA'
+,p_message_text=>'View looks good!'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804581493324335)
+,p_name=>'VIEW_MUST_HAVE_APP_ID'
+,p_message_text=>'The 3rd field in the view must be APPLICATION_ID.'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804270659324335)
+,p_name=>'VIEW_MUST_HAVE_PASS_FAIL'
+,p_message_text=>'The 1st field in the view must be PASS_FAIL.'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804890048324335)
+,p_name=>'VIEW_MUST_HAVE_REF_CODE'
+,p_message_text=>'The 2nd field in the view must be REFERENCE_CODE.'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804065731324334)
+,p_name=>'VIEW_NOT_IN_SCHEMA'
+,p_message_text=>'View not accessible in current schema.'
+);
+wwv_flow_api.component_end;
+end;
+/

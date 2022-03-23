@@ -28,7 +28,7 @@ prompt APPLICATION 130 - Application Standards Tracker
 -- Application Export:
 --   Application:     130
 --   Name:            Application Standards Tracker
---   Date and Time:   20:57 Monday March 21, 2022
+--   Date and Time:   12:56 Wednesday March 23, 2022
 --   Exported By:     ILA
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -70,7 +70,7 @@ prompt APPLICATION 130 - Application Standards Tracker
 --         Shortcuts:              1
 --         Plug-ins:               8
 --       Globalization:
---         Messages:              47
+--         Messages:              52
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
@@ -139,8 +139,8 @@ wwv_flow_api.create_flow(
 ,p_substitution_value_03=>'DD-MON-YYYY'
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
-,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220321205527'
+,p_last_updated_by=>'ILA'
+,p_last_upd_yyyymmddhh24miss=>'20220323125528'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>15
 ,p_ui_type_name => null
@@ -13405,6 +13405,34 @@ wwv_flow_api.create_message(
 ,p_message_text=>'Username too long'
 );
 null;
+end;
+/
+begin
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18803046988296680)
+,p_name=>'VIEW_MEETS_CRITERIA'
+,p_message_text=>'View looks good!'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804581493324335)
+,p_name=>'VIEW_MUST_HAVE_APP_ID'
+,p_message_text=>'The 3rd field in the view must be APPLICATION_ID.'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804270659324335)
+,p_name=>'VIEW_MUST_HAVE_PASS_FAIL'
+,p_message_text=>'The 1st field in the view must be PASS_FAIL.'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804890048324335)
+,p_name=>'VIEW_MUST_HAVE_REF_CODE'
+,p_message_text=>'The 2nd field in the view must be REFERENCE_CODE.'
+);
+wwv_flow_api.create_message(
+ p_id=>wwv_flow_api.id(18804065731324334)
+,p_name=>'VIEW_NOT_IN_SCHEMA'
+,p_message_text=>'View not accessible in current schema.'
+);
 end;
 /
 prompt --application/shared_components/globalization/dyntranslations
@@ -34498,22 +34526,29 @@ wwv_flow_api.create_install(
 '-- from user_views',
 '-- where (lower(view_name) like ''%ast%'' ) or  (lower(view_name) like ''v_eba%'' )',
 '',
-'drop view v_ast_apex_accessibility_item_label;',
-'drop view v_ast_apex_accessibility_page_title;',
+'drop view v_ast_db_plsql_commented_specs;',
+'drop view v_ast_db_plsql_deprecated_code;',
+'drop view v_ast_db_plsql_duplicate_statements;',
+'drop view v_ast_db_plsql_identifier_naming;',
+'drop view v_ast_db_plsql_unusued_identifiers;',
+'drop view v_eba_stds_standards;',
+'drop view v_eba_stds_application_test_pass_fail;',
 'drop view v_ast_apex_accessibility_theme;',
 'drop view v_ast_apex_app_auth;',
+'drop view v_ast_apex_accessibility_item_label;',
 'drop view v_ast_apex_app_item_naming;',
 'drop view v_ast_apex_html_escaping_cols;',
 'drop view v_ast_apex_item_help;',
 'drop view v_ast_apex_page_auth;',
 'drop view v_ast_apex_page_help;',
 'drop view v_ast_apex_page_item_naming;',
+'drop view v_ast_db_plsql_all;',
+'drop view v_ast_apex_accessibility_page_title;',
 'drop view v_ast_db_plsql_1_commented_specs;',
 'drop view v_ast_db_plsql_2_deprecated_code;',
 'drop view v_ast_db_plsql_3_duplicate_statements;',
 'drop view v_ast_db_plsql_4_identifier_naming;',
 'drop view v_ast_db_plsql_5_unusued_identifiers;',
-'drop view v_ast_db_plsql_all;',
 'drop view v_eba_stds_standard_tests;'))
 ,p_required_free_kb=>100
 ,p_required_sys_privs=>'CREATE PROCEDURE:CREATE SEQUENCE:CREATE TABLE:CREATE TRIGGER:CREATE TYPE :CREATE VIEW'

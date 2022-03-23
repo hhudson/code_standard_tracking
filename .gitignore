@@ -15,3 +15,4 @@ apexcl.config.json
 scripts/user-config.sh
 /scratch
 /scratchwork
+/ila_ast_scratchwork

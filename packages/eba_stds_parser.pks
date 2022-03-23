@@ -10,7 +10,7 @@ create or replace package eba_stds_parser authid definer as
 
     procedure validate_view( p_view_name in user_views.view_name%type       default null,
                              p_test_id   in eba_stds_standard_tests.id%type default null,
-                             x_view_sql  out nocopy user_views.text%type,
+                             x_view_sql  out nocopy clob,
                              x_feedback  out nocopy varchar2,
                              x_pass      out nocopy boolean);
 

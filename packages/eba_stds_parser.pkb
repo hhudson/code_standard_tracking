@@ -2,7 +2,7 @@ set define off
 create or replace package body eba_stds_parser as
 
     gc_scope_prefix   constant varchar2(31) := lower($$plsql_unit) || '.';
-    gc_default_app_id constant number := 261;
+    gc_default_app_id constant number := 130;
     
 
     -- Private helper function.
@@ -101,7 +101,7 @@ create or replace package body eba_stds_parser as
 
     procedure validate_view( p_view_name in user_views.view_name%type       default null,
                              p_test_id   in eba_stds_standard_tests.id%type default null,
-                             x_view_sql  out nocopy user_views.text%type,
+                             x_view_sql  out nocopy clob,
                              x_feedback  out nocopy varchar2,
                              x_pass      out nocopy boolean)
     is
@@ -149,7 +149,12 @@ create or replace package body eba_stds_parser as
             l_sql := eba_stds_parser.view_sql (p_view_name => l_view_name);
         exception when no_data_found then
             apex_debug.message(p_message => l_debug_template, p0 => 'View does not exist', p_level => apex_debug.c_log_level_warn, p_force => true);
-            l_failure_message := l_failure_message||'<li>View not accessible in current schema.</li>';
+            l_failure_message := apex_string.format(p_message => '%0<li>%1</li>', 
+                                                    p0 => l_failure_message,
+                                                    p1 => apex_lang.message (p_name => 'view_not_in_schema', 
+                                                                             p_lang => 'en', 
+                                                                             p_application_id => gc_default_app_id)
+                                                    );
         end view_sql;
 
         begin <<pass_fail>>    
@@ -161,7 +166,12 @@ create or replace package body eba_stds_parser as
                 and column_id = 1;
         exception when no_data_found then
             apex_debug.message(p_message => l_debug_template, p0 => 'No Application id', p_level => apex_debug.c_log_level_warn, p_force => true);
-            l_failure_message := l_failure_message||'<li>The 1st field in the view must be PASS_FAIL.</li>';
+            l_failure_message := apex_string.format(p_message => '%0<li>%1</li>', 
+                                                    p0 => l_failure_message,
+                                                    p1 => apex_lang.message (p_name => 'view_must_have_pass_fail', 
+                                                                             p_lang => 'en', 
+                                                                             p_application_id => gc_default_app_id)
+                                                    );
         end application_id;
 
         begin <<reference_code>>    
@@ -173,7 +183,12 @@ create or replace package body eba_stds_parser as
                 and column_id = 2;
         exception when no_data_found then
             apex_debug.message(p_message => l_debug_template, p0 => 'No Reference Code', p_level => apex_debug.c_log_level_warn, p_force => true);
-            l_failure_message := l_failure_message||'<li>The 2nd field in the view must be REFERENCE_CODE.</li>';
+            l_failure_message := apex_string.format(p_message => '%0<li>%1</li>', 
+                                                    p0 => l_failure_message,
+                                                    p1 => apex_lang.message (p_name => 'view_must_have_ref_code', 
+                                                                             p_lang => 'en', 
+                                                                             p_application_id => gc_default_app_id)
+                                                    );
         end reference_code;
 
         begin <<application_id>>    
@@ -185,7 +200,12 @@ create or replace package body eba_stds_parser as
                 and column_id = 3;
         exception when no_data_found then
             apex_debug.message(p_message => l_debug_template, p0 => 'No Application id', p_level => apex_debug.c_log_level_warn, p_force => true);
-            l_failure_message := l_failure_message||'<li>The 3rd field in the view must be APPLICATION_ID.</li>';
+            l_failure_message := apex_string.format(p_message => '%0<li>%1</li>', 
+                                                    p0 => l_failure_message,
+                                                    p1 => apex_lang.message (p_name => 'view_must_have_app_id', 
+                                                                             p_lang => 'en', 
+                                                                             p_application_id => gc_default_app_id)
+                                                    );
         end application_id;
 
 
@@ -193,7 +213,11 @@ create or replace package body eba_stds_parser as
 
         x_feedback := case  when l_failure_message is not null 
                             then apex_string.format('<ul class="u-danger-text">%s</ul>', l_failure_message)
-                            else '<p class="u-success-text">View looks good!<p>'
+                            else apex_string.format('<p class="u-success-text">%s<p>',
+                                                    apex_lang.message (p_name => 'view_meets_criteria', 
+                                                                       p_lang => 'en', 
+                                                                       p_application_id => gc_default_app_id)
+                                                   )
                             end;
 
         x_pass := case  when l_failure_message is null 
@@ -719,7 +743,8 @@ create or replace package body eba_stds_parser as
             p_collection_name => l_collection,
             p_query => l_sql,
             p_names => l_names,
-            p_values => l_values
+            p_values => l_values,
+            p_truncate_if_exists => 'YES'
         );
     
         -- Now get the column headings and which columns to display.
