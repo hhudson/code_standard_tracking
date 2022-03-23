@@ -22,8 +22,8 @@ prompt @../views/v_ast_apex_page_item_naming.sql
 @../views/v_ast_apex_page_item_naming.sql
 prompt @../views/v_ast_db_plsql_1_commented_specs.sql
 @../views/v_ast_db_plsql_1_commented_specs.sql
-prompt @../views/v_ast_db_plsql_2_deprecated_code.sql
-@../views/v_ast_db_plsql_2_deprecated_code.sql
+prompt @../views/v_ast_db_plsql_2_discouraged_code.sql
+@../views/v_ast_db_plsql_2_discouraged_code.sql
 prompt @../views/v_ast_db_plsql_3_duplicate_statements.sql
 @../views/v_ast_db_plsql_3_duplicate_statements.sql
 prompt @../views/v_ast_db_plsql_4_identifier_naming.sql
@@ -32,16 +32,6 @@ prompt @../views/v_ast_db_plsql_5_unusued_identifiers.sql
 @../views/v_ast_db_plsql_5_unusued_identifiers.sql
 prompt @../views/v_ast_db_plsql_all.sql
 @../views/v_ast_db_plsql_all.sql
-prompt @../views/v_ast_db_plsql_commented_specs.sql
-@../views/v_ast_db_plsql_commented_specs.sql
-prompt @../views/v_ast_db_plsql_deprecated_code.sql
-@../views/v_ast_db_plsql_deprecated_code.sql
-prompt @../views/v_ast_db_plsql_duplicate_statements.sql
-@../views/v_ast_db_plsql_duplicate_statements.sql
-prompt @../views/v_ast_db_plsql_identifier_naming.sql
-@../views/v_ast_db_plsql_identifier_naming.sql
-prompt @../views/v_ast_db_plsql_unusued_identifiers.sql
-@../views/v_ast_db_plsql_unusued_identifiers.sql
 prompt @../views/v_eba_stds_application_test_pass_fail.sql
 @../views/v_eba_stds_application_test_pass_fail.sql
 prompt @../views/v_eba_stds_standard_tests.sql

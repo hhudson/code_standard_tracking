@@ -8,16 +8,16 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2953977059365452042
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list(
- p_id=>wwv_flow_api.id(8793182274202433091)
+ p_id=>wwv_flow_api.id(8811995598186844696)
 ,p_name=>'Activity Reports'
 ,p_list_status=>'PUBLIC'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(8794410165702717330)
+ p_id=>wwv_flow_api.id(8813223489687128935)
 ,p_list_item_display_sequence=>10
 ,p_list_item_link_text=>'Page Views'
 ,p_list_item_link_target=>'f?p=&APP_ID.:10:&SESSION.::&DEBUG.::::'
@@ -27,7 +27,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(8794417570550718772)
+ p_id=>wwv_flow_api.id(8813230894535130377)
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'Top Users'
 ,p_list_item_link_target=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
@@ -37,7 +37,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(7712422255211357783)
+ p_id=>wwv_flow_api.id(7731235579195769388)
 ,p_list_item_display_sequence=>30
 ,p_list_item_link_text=>'Activity Calendar'
 ,p_list_item_link_target=>'f?p=&APP_ID.:42:&SESSION.::&DEBUG.:RP:::'

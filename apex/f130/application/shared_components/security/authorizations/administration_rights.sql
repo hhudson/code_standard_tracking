@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2935163735381040437
+,p_default_id_offset=>2953977059365452042
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_security_scheme(
- p_id=>wwv_flow_api.id(7570270738032629690)
+ p_id=>wwv_flow_api.id(7589084062017041295)
 ,p_name=>'ADMINISTRATION RIGHTS'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>'return eba_stds_security.get_authorization_level(:APP_USER) = 3;'
