@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2972806472018582496
+,p_default_id_offset=>2991650200555550248
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list_of_values(
- p_id=>wwv_flow_api.id(4390416656333465152)
+ p_id=>wwv_flow_api.id(4409260384870432904)
 ,p_lov_name=>'APPLICATION TYPES'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'

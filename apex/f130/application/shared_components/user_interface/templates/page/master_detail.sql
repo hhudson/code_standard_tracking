@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2972806472018582496
+,p_default_id_offset=>2991650200555550248
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_template(
- p_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(4420164082606912653)
 ,p_theme_id=>42
 ,p_name=>'Marquee'
 ,p_internal_name=>'MASTER_DETAIL'
@@ -197,8 +197,8 @@ wwv_flow_api.create_template(
 ,p_dialog_browser_frame=>'MODAL'
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888049089792530285)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906892818329498037)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Content Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>true
@@ -206,16 +206,16 @@ wwv_flow_api.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>8
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888049597747530285)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906893326284498037)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Breadcrumb Bar'
 ,p_placeholder=>'REGION_POSITION_01'
 ,p_has_grid_support=>false
 ,p_glv_new_row=>true
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888050112387530285)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906893840924498037)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Master Detail'
 ,p_placeholder=>'REGION_POSITION_02'
 ,p_has_grid_support=>true
@@ -223,8 +223,8 @@ wwv_flow_api.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>8
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888050609171530285)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906894337708498037)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Right Side Column'
 ,p_placeholder=>'REGION_POSITION_03'
 ,p_has_grid_support=>false
@@ -232,8 +232,8 @@ wwv_flow_api.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888051109621530286)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906894838158498038)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Inline Dialogs'
 ,p_placeholder=>'REGION_POSITION_04'
 ,p_has_grid_support=>true
@@ -241,8 +241,8 @@ wwv_flow_api.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888051648402530286)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906895376939498038)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Footer'
 ,p_placeholder=>'REGION_POSITION_05'
 ,p_has_grid_support=>true
@@ -250,24 +250,24 @@ wwv_flow_api.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>8
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888052090770530286)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906895819307498038)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Page Navigation'
 ,p_placeholder=>'REGION_POSITION_06'
 ,p_has_grid_support=>false
 ,p_glv_new_row=>true
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888052624296530286)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906896352833498038)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Page Header'
 ,p_placeholder=>'REGION_POSITION_07'
 ,p_has_grid_support=>false
 ,p_glv_new_row=>true
 );
 wwv_flow_api.create_page_tmpl_display_point(
- p_id=>wwv_flow_api.id(3888053139980530287)
-,p_page_template_id=>wwv_flow_api.id(4401320354069944901)
+ p_id=>wwv_flow_api.id(3906896868517498039)
+,p_page_template_id=>wwv_flow_api.id(4420164082606912653)
 ,p_name=>'Before Content Body'
 ,p_placeholder=>'REGION_POSITION_08'
 ,p_has_grid_support=>true

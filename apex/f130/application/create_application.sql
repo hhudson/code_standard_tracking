@@ -8,7 +8,7 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2972806472018582496
+,p_default_id_offset=>2991650200555550248
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_flow(
@@ -34,7 +34,7 @@ wwv_flow_api.create_flow(
 ,p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,'')
 ,p_documentation_banner=>'1.0.0 -> 1.0.1: Implemented redesigned administrative ACL controls'
 ,p_authentication=>'PLUGIN'
-,p_authentication_id=>wwv_flow_api.id(8812217025761748181)
+,p_authentication_id=>wwv_flow_api.id(8831060754298715933)
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
 ,p_logo_text=>'&APPLICATION_TITLE.'
@@ -51,7 +51,7 @@ wwv_flow_api.create_flow(
 ,p_browser_frame=>'D'
 ,p_referrer_policy=>'strict-origin-when-cross-origin'
 ,p_runtime_api_usage=>'T'
-,p_security_scheme=>wwv_flow_api.id(7607913674014171760)
+,p_security_scheme=>wwv_flow_api.id(7626757402551139512)
 ,p_rejoin_existing_sessions=>'P'
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
@@ -65,7 +65,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220323194129'
+,p_last_upd_yyyymmddhh24miss=>'20220324135045'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>15
 ,p_ui_type_name => null

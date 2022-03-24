@@ -8,29 +8,29 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2972806472018582496
+,p_default_id_offset=>2991650200555550248
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list_of_values(
- p_id=>wwv_flow_api.id(4548696652671238590)
+ p_id=>wwv_flow_api.id(4567540381208206342)
 ,p_lov_name=>'TEST TYPES'
-,p_lov_query=>'.'||wwv_flow_api.id(4548696652671238590)||'.'
+,p_lov_query=>'.'||wwv_flow_api.id(4567540381208206342)||'.'
 ,p_location=>'STATIC'
 );
 wwv_flow_api.create_static_lov_data(
- p_id=>wwv_flow_api.id(4548696940632238605)
+ p_id=>wwv_flow_api.id(4567540669169206357)
 ,p_lov_disp_sequence=>1
 ,p_lov_disp_value=>'Pass/Fail (Y/N)'
 ,p_lov_return_value=>'PASS_FAIL'
 );
 wwv_flow_api.create_static_lov_data(
- p_id=>wwv_flow_api.id(4548697231341238612)
+ p_id=>wwv_flow_api.id(4567540959878206364)
 ,p_lov_disp_sequence=>2
 ,p_lov_disp_value=>'Report'
 ,p_lov_return_value=>'FAIL_REPORT'
 );
 wwv_flow_api.create_static_lov_data(
- p_id=>wwv_flow_api.id(4548697542982238613)
+ p_id=>wwv_flow_api.id(4567541271519206365)
 ,p_lov_disp_sequence=>3
 ,p_lov_disp_value=>'Percentage'
 ,p_lov_return_value=>'PERCENTAGE'

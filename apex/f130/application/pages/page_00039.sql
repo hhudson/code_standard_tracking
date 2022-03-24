@@ -8,19 +8,19 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2972806472018582496
+,p_default_id_offset=>2991650200555550248
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_page(
  p_id=>39
-,p_user_interface_id=>wwv_flow_api.id(5556384169945677648)
+,p_user_interface_id=>wwv_flow_api.id(5575227898482645400)
 ,p_name=>'Help'
 ,p_alias=>'HELP'
 ,p_step_title=>'Help'
 ,p_reload_on_submit=>'A'
 ,p_warn_on_unsaved_changes=>'N'
 ,p_autocomplete_on_off=>'ON'
-,p_group_id=>wwv_flow_api.id(5729482384229572946)
+,p_group_id=>wwv_flow_api.id(5748326112766540698)
 ,p_html_page_header=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<style>',
 'div#uOneCol div.helpContainer div.helpSide h1.appNameHeader {margin-top: 8px; font-size: 16px; line-height: 24px;}',
@@ -28,15 +28,15 @@ wwv_flow_api.create_page(
 'padding-top: 8px;}',
 '</style>'))
 ,p_inline_css=>'.standards_tester_app {background-position: -384px -384px}'
-,p_step_template=>wwv_flow_api.id(4401307690547944881)
+,p_step_template=>wwv_flow_api.id(4420151419084912633)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_upd_yyyymmddhh24miss=>'20170627080252'
 );
 wwv_flow_api.create_report_region(
- p_id=>wwv_flow_api.id(5021006787064232581)
+ p_id=>wwv_flow_api.id(5039850515601200333)
 ,p_name=>'&APPLICATION_TITLE.'
-,p_template=>wwv_flow_api.id(4401347297296944934)
+,p_template=>wwv_flow_api.id(4420191025833912686)
 ,p_display_sequence=>20
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_region_css_classes=>'t-HeroRegion--featured'
@@ -56,7 +56,7 @@ wwv_flow_api.create_report_region(
 'where aa.application_id = :APP_ID'))
 ,p_ajax_enabled=>'Y'
 ,p_lazy_loading=>false
-,p_query_row_template=>wwv_flow_api.id(4401359538340944964)
+,p_query_row_template=>wwv_flow_api.id(4420203266877912716)
 ,p_query_num_rows=>15
 ,p_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_query_show_nulls_as=>'-'
@@ -66,7 +66,7 @@ wwv_flow_api.create_report_region(
 ,p_plug_query_strip_html=>'N'
 );
 wwv_flow_api.create_report_columns(
- p_id=>wwv_flow_api.id(5021006869183232582)
+ p_id=>wwv_flow_api.id(5039850597720200334)
 ,p_query_column_id=>1
 ,p_column_alias=>'APP_VERSION'
 ,p_column_display_sequence=>1
@@ -78,7 +78,7 @@ wwv_flow_api.create_report_columns(
 ,p_include_in_export=>'Y'
 );
 wwv_flow_api.create_report_columns(
- p_id=>wwv_flow_api.id(5021006944562232583)
+ p_id=>wwv_flow_api.id(5039850673099200335)
 ,p_query_column_id=>2
 ,p_column_alias=>'PAGES'
 ,p_column_display_sequence=>2
@@ -90,7 +90,7 @@ wwv_flow_api.create_report_columns(
 ,p_include_in_export=>'Y'
 );
 wwv_flow_api.create_report_columns(
- p_id=>wwv_flow_api.id(5021007119887232584)
+ p_id=>wwv_flow_api.id(5039850848424200336)
 ,p_query_column_id=>3
 ,p_column_alias=>'VENDOR'
 ,p_column_display_sequence=>3
@@ -102,10 +102,10 @@ wwv_flow_api.create_report_columns(
 ,p_include_in_export=>'Y'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(7638898187861201408)
+ p_id=>wwv_flow_api.id(7657741916398169160)
 ,p_plug_name=>'Help Container'
 ,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader:t-Region--scrollBody'
-,p_plug_template=>wwv_flow_api.id(4401351010646944943)
+,p_plug_template=>wwv_flow_api.id(4420194739183912695)
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'BODY'
 ,p_plug_query_num_rows=>15
@@ -115,12 +115,12 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_03=>'N'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5138150766117208920)
+ p_id=>wwv_flow_api.id(5156994494654176672)
 ,p_plug_name=>'About this Application'
-,p_parent_plug_id=>wwv_flow_api.id(7638898187861201408)
+,p_parent_plug_id=>wwv_flow_api.id(7657741916398169160)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_api.id(4401337325799944920)
+,p_plug_template=>wwv_flow_api.id(4420181054336912672)
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'BODY'
 ,p_plug_source_type=>'PLUGIN_COM.ORACLE.APEX.TRANSLATED_MESSAGE'
@@ -129,12 +129,12 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_12=>'Y'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5138152068608237602)
+ p_id=>wwv_flow_api.id(5156995797145205354)
 ,p_plug_name=>'Getting Started'
-,p_parent_plug_id=>wwv_flow_api.id(7638898187861201408)
+,p_parent_plug_id=>wwv_flow_api.id(7657741916398169160)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_api.id(4401337325799944920)
+,p_plug_template=>wwv_flow_api.id(4420181054336912672)
 ,p_plug_display_sequence=>20
 ,p_plug_display_point=>'BODY'
 ,p_plug_source_type=>'PLUGIN_COM.ORACLE.APEX.TRANSLATED_MESSAGE'
@@ -143,12 +143,12 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_12=>'Y'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5138153744151240053)
+ p_id=>wwv_flow_api.id(5156997472688207805)
 ,p_plug_name=>'Features'
-,p_parent_plug_id=>wwv_flow_api.id(7638898187861201408)
+,p_parent_plug_id=>wwv_flow_api.id(7657741916398169160)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_api.id(4401337325799944920)
+,p_plug_template=>wwv_flow_api.id(4420181054336912672)
 ,p_plug_display_sequence=>30
 ,p_plug_display_point=>'BODY'
 ,p_plug_source_type=>'PLUGIN_COM.ORACLE.APEX.TRANSLATED_MESSAGE'
@@ -157,12 +157,12 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_12=>'Y'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5138153951770242273)
+ p_id=>wwv_flow_api.id(5156997680307210025)
 ,p_plug_name=>'Support'
-,p_parent_plug_id=>wwv_flow_api.id(7638898187861201408)
+,p_parent_plug_id=>wwv_flow_api.id(7657741916398169160)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_api.id(4401337325799944920)
+,p_plug_template=>wwv_flow_api.id(4420181054336912672)
 ,p_plug_display_sequence=>40
 ,p_plug_display_point=>'BODY'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -177,16 +177,16 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_12=>'Y'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(7638899572858201414)
+ p_id=>wwv_flow_api.id(7657743301395169166)
 ,p_plug_name=>'Help'
 ,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_api.id(4401353470750944948)
+,p_plug_template=>wwv_flow_api.id(4420197199287912700)
 ,p_plug_display_sequence=>70
 ,p_plug_display_point=>'REGION_POSITION_01'
-,p_menu_id=>wwv_flow_api.id(8812218408155748195)
+,p_menu_id=>wwv_flow_api.id(8831062136692715947)
 ,p_plug_source_type=>'NATIVE_BREADCRUMB'
-,p_menu_template_id=>wwv_flow_api.id(4401368845563944999)
+,p_menu_template_id=>wwv_flow_api.id(4420212574100912751)
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_plug_display_condition_type=>'NEVER'
 );

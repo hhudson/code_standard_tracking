@@ -8,11 +8,11 @@ wwv_flow_api.component_begin (
 ,p_release=>'21.1.7'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2972806472018582496
+,p_default_id_offset=>2991650200555550248
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_row_template(
- p_id=>wwv_flow_api.id(4401357621151944961)
+ p_id=>wwv_flow_api.id(4420201349688912713)
 ,p_row_template_name=>'Standard'
 ,p_internal_name=>'STANDARD'
 ,p_row_template1=>'<td class="t-Report-cell" #ALIGNMENT# headers="#COLUMN_HEADER_NAME#">#COLUMN_VALUE#</td>'
@@ -64,7 +64,7 @@ wwv_flow_api.create_row_template(
 );
 begin
 wwv_flow_api.create_row_template_patch(
- p_id=>wwv_flow_api.id(4401357621151944961)
+ p_id=>wwv_flow_api.id(4420201349688912713)
 ,p_row_template_before_first=>'<tr>'
 ,p_row_template_after_last=>'</tr>'
 );
