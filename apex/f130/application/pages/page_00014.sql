@@ -25,10 +25,9 @@ wwv_flow_api.create_page(
 ,p_step_template=>wwv_flow_api.id(4420177743412912667)
 ,p_page_template_options=>'#DEFAULT#:ui-dialog--stretch'
 ,p_required_role=>wwv_flow_api.id(7626757694980139512)
-,p_dialog_height=>'900'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220324135045'
+,p_last_upd_yyyymmddhh24miss=>'20220324140853'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(3940606715535853822)
