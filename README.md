@@ -8,6 +8,14 @@ In this repo, I am recording methods and queries to track and enforce APEX stand
 
 In this repo, I have included a modified copy of the [Application Standards Tracker](apex/f130.sql), an application that was formerly included in the APEX Sample App Gallery. I have modified the application to expand it's use to cover enforcing coding standards in the supporting database objects (tables, views, packages, etc).
 
+### Installation
+
+Per the standard of the Insum Starter Template, the installation script is [release/_release.sql](release/_release.sql).
+
+To clear your space of possible conflicts, you can run the [deinstall script](scripts/deinstall.sql).
+
+I've recorded a short video to document the installation: [How to Install the Application Standards Tracker](https://www.youtube.com/watch?v=6Ch2oxgJSPo).
+
 ### Modifications to support DB object coding standards
 
 1. Test assertion queries are now required to be stored as views in the database, instead of as clobs in the eba_stds_standard_tests table. This is a personal preference but has many advantages:
