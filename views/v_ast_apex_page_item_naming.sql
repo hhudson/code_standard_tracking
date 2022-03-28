@@ -14,6 +14,8 @@ pi.page_id,
 pi.page_name, 
 pi.region
 from apex_application_page_items pi
+inner join apex_applications aa on pi.application_id = aa.application_id
+                                and aa.availability_status != 'Unavailable'
 where pi.page_id not like '%.%' --indicates a translated app 
 order by  pi.application_name, pi.application_id, pi.page_id, pi.page_name, pi.region, pi.item_id
 ;

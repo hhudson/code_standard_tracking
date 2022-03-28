@@ -14,6 +14,8 @@ ic1.column_alias,
 ic1.report_label,
 'IR' report_type
 from apex_application_page_ir_col ic1
+inner join apex_applications aa on ic1.application_id = aa.application_id
+                                and aa.availability_status != 'Unavailable'
 union all
 select 
 case when ic2.escape_on_http_output ='Yes'
@@ -30,5 +32,7 @@ ic2.name,
 ic2.heading,
 'IG' report_type
 from apex_appl_page_ig_columns ic2
+inner join apex_applications aa on ic2.application_id = aa.application_id
+                                and aa.availability_status != 'Unavailable'
 order by application_id, page_id, region_name, column_alias
 ;

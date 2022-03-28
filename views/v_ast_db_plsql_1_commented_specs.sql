@@ -6,6 +6,7 @@ with proc_declrtns as (
     where type  in ('PROCEDURE','FUNCTION')
     and object_type = 'PACKAGE'
     and usage  = 'DECLARATION'
+    and object_name not like 'UT_%' --this requirement does not apply to utplsql packages
     order by object_name, line, name)
 select 
 case when trim(us.text) = '------------------------------------------------------------------------------'

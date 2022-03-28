@@ -13,6 +13,7 @@ ts.is_accessible,
 ts.workspace
 from apex_application_theme_styles ts
 inner join apex_applications aa on ts.application_id = aa.application_id
+                                and aa.availability_status != 'Unavailable'
 where ts.is_current = 'Yes'
 order by ts.application_id
 ;

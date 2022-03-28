@@ -19,6 +19,7 @@ begin
   l_data(l_data.count + 1) := rec_data(1, 'APEX General Standards', 'These are best practices that probably apply to any given APEX application.');
   l_data(l_data.count + 1) := rec_data(2, 'APEX Accessibility Standards', 'These are standards to maintain Accessibility.');
   l_data(l_data.count + 1) := rec_data(3, 'Supporting DB Object Standards', 'These tests run against the DB objects and therefore may be hard to associate with a given application. They can be associated with the "Application Standards Tracker" app.');
+  l_data(l_data.count + 1) := rec_data(4, 'APEX Broken Functionality', 'These tests identify functionality that invalid.');
 
 
   for i in 1..l_data.count loop

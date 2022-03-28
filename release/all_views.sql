@@ -20,6 +20,8 @@ prompt @../views/v_ast_apex_page_help.sql
 @../views/v_ast_apex_page_help.sql
 prompt @../views/v_ast_apex_page_item_naming.sql
 @../views/v_ast_apex_page_item_naming.sql
+prompt @../views/v_ast_apex_valid_list_links.sql
+@../views/v_ast_apex_valid_list_links.sql
 prompt @../views/v_ast_db_plsql_1_commented_specs.sql
 @../views/v_ast_db_plsql_1_commented_specs.sql
 prompt @../views/v_ast_db_plsql_2_discouraged_code.sql

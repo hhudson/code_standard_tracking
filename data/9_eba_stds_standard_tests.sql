@@ -10,6 +10,7 @@ declare
   l_general_standard    eba_stds_standard_tests.standard_id%type := 1;
   l_accessible_standard eba_stds_standard_tests.standard_id%type := 2;
   l_db_object_standard  eba_stds_standard_tests.standard_id%type := 3;
+  l_broken_standard     eba_stds_standard_tests.standard_id%type := 4;
 begin
 
   -- Column order:
@@ -23,6 +24,7 @@ begin
   -- 7: failure_help_text
 
   -- Template
+  -- General
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_APP_AUTH', 'Application has Authorization scheme', 10, 'FAIL_REPORT', l_general_standard, 'APPLICATION', 
                                     'All Applications should have Authorization schemes.');
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_PAGE_AUTH', 'Application Pages have Authorization schemes', 15, 'FAIL_REPORT', l_general_standard, 'PAGE', 
@@ -37,17 +39,19 @@ begin
                                     'Pages should provide Help Text to users.');
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_PAGE_ITEM_NAMING', 'Page Items correctly prefixed', 60, 'FAIL_REPORT', l_general_standard, 'PAGE_ITEM', 
                                     'Page Items should be prefixed "P" and the [page id], e.g. "P1_ITEM".');
-
+  -- accessibility
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_ACCESSIBILITY_THEME', 'Theme Style tested for accessibility', 100, 'FAIL_REPORT', l_accessible_standard, 'APPLICATION', 
                                     'Is your app using a Theme Style that has been tested for accessibility? Theme Styles that have not been accessibility tested may contain more issues, such as insufficient color contrast.');
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_ACCESSIBILITY_ITEM_LABEL', 'Page item has label', 110, 'FAIL_REPORT', l_accessible_standard, 'PAGE_ITEM', 
                                     'Does the item have a label defined? For example just defining the "Value Placeholder" text is not sufficient in labelling an item for accessibility.');
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_ACCESSIBILITY_PAGE_TITLE', 'Page has page title', 120, 'FAIL_REPORT', l_accessible_standard, 'PAGE', 
                                     'Does the page have a title? Meaningful page titles are important for accessibility, to help users understand the content and purpose of the current page. Note: Global pages, and pages with no regions are excluded from this check.');
-  
+  --db object
   l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_DB_PLSQL_ALL', 'PL/SQL code standards', 200, 'FAIL_REPORT', l_db_object_standard, 'DB_SUPPORTING_OBJECT', 
                                     'Enforcing PL/SQL code standards.');
-
+  --Broken functionality
+  l_st_data(l_st_data.count + 1) := rec_t_data('V_AST_APEX_VALID_LIST_LINKS', 'Links to invalid applications', 300, 'FAIL_REPORT', l_broken_standard, 'LISTENTRY', 
+                                    'List Entries should not link to applications that have been made "unavailable"');
 
   for i in 1..l_st_data.count loop
     l_st_row.query_view := l_st_data(i)(1);

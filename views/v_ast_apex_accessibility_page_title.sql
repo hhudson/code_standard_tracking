@@ -10,6 +10,8 @@ ap.page_id,
 ap.page_name,
 ap.application_name
 from apex_application_pages ap
+inner join apex_applications aa on ap.application_id = aa.application_id
+                                and aa.availability_status != 'Unavailable'
 where ap.page_id != 0
 order by ap.application_id, ap.page_id
 ;

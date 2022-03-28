@@ -1,33 +1,33 @@
 /* this view is referenced in v_ast_db_plsql_all */
 create or replace force view v_ast_db_plsql_4_identifier_naming as
-with proc_start as (
-    select ui.object_name, min(UI.line) start_line
-        from user_identifiers ui
-        where 1=1
-        AND object_type = 'PACKAGE BODY'
-        and type in ('FUNCTION', 'PROCEDURE')
-        and usage in ('DEFINITION')
-        group by ui.object_name)
+with var_assgn as (select signature, max(line) last_line
+                    from user_identifiers ui
+                    where ui.type = 'VARIABLE'
+                    and ui.usage = 'ASSIGNMENT'
+                    group by signature)
 select
 case when ui.type = 'CONSTANT' 
         then case when ui.object_type = 'PACKAGE'
-                  then case when (ui.name not like 'G_%' or ui.name not like 'GC_%') 
+                  then case when (ui.name not like 'G_%' and ui.name not like 'GC_%') 
                             then 'Package spec constants must begin with g_ or gc_'
                             end
                   when ui.object_type = 'PACKAGE BODY' 
-                    then case when ui.line < ps.start_line
-                              then case when (ui.name not like 'G_%' or ui.name not like 'GC_%') 
+                    then case when ui.usage_context_id  = 1
+                              then case when (ui.name not like 'G_%' and ui.name not like 'GC_%') 
                                         then 'Package body global constants must begin with g_ or gc_'
                                         end
-                              when (ui.name not like 'C_%' or ui.name not like 'K_%')
-                              then 'Package body local constants must begin with c_ or k_'
+                              else case when  (ui.name not like 'C_%' and ui.name not like 'K_%')
+                                        then 'Package body local constants must begin with c_ or k_'
+                                        end
                               end
                  end
      when ui.type = 'VARIABLE'
      then case when ui.object_type = 'PACKAGE'
                then 'Variables in the package spec are forbidden'
-               --when ui.name not like 'L_%'
-               --then 'Local variables must begin with l_' r_row_object c_row_object%rowtype; is a variable
+               when ui.object_type = 'PACKAGE BODY'
+               then case when ui.line = va.last_line
+                         then 'This variable should be a constant'
+                         end
                end
      when ui.type in ('CURSOR','REFCURSOR') 
      then case when ui.name not like 'CUR_%'
@@ -60,8 +60,8 @@ ui.object_type,
 ui.line,
 'Enforcing identifier naming conventions' check_type
 from   user_identifiers ui
-left join proc_start ps on  ui.object_name = ps.object_name
-                        and ui.object_type = 'PACKAGE BODY'
+left join var_assgn va on ui.signature = va.signature
 where  ui.usage = 'DECLARATION'
+and ui.implicit = 'NO'
 order by ui.object_name, ui.object_type, ui.name, ui.type, ui.line  
 ;

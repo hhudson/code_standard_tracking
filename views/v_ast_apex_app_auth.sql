@@ -9,5 +9,6 @@ aa.application_id,
 aa.application_name,
 aa.authorization_scheme
 from apex_applications aa
+where aa.availability_status != 'Unavailable'
 order by  aa.application_id
 ;

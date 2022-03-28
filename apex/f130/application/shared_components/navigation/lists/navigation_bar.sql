@@ -17,6 +17,14 @@ wwv_flow_api.create_list(
 ,p_list_status=>'PUBLIC'
 );
 wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19010238593407894)
+,p_list_item_display_sequence=>5
+,p_list_item_link_text=>'Contribute'
+,p_list_item_link_target=>'https://github.com/hhudson/code_standard_tracking'
+,p_list_item_icon=>'fa-code-fork'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(4432906235508246510)
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'Help'

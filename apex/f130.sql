@@ -28,7 +28,7 @@ prompt APPLICATION 130 - Application Standards Tracker
 -- Application Export:
 --   Application:     130
 --   Name:            Application Standards Tracker
---   Date and Time:   14:11 Thursday March 24, 2022
+--   Date and Time:   20:59 Monday March 28, 2022
 --   Exported By:     ILA
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -140,7 +140,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220324140853'
+,p_last_upd_yyyymmddhh24miss=>'20220328205618'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>15
 ,p_ui_type_name => null
@@ -238,6 +238,14 @@ wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(4432905679920246473)
 ,p_name=>'Navigation Bar'
 ,p_list_status=>'PUBLIC'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19010238593407894)
+,p_list_item_display_sequence=>5
+,p_list_item_link_text=>'Contribute'
+,p_list_item_link_target=>'https://github.com/hhudson/code_standard_tracking'
+,p_list_item_icon=>'fa-code-fork'
+,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(4432906235508246510)

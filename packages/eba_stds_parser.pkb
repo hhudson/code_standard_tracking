@@ -87,9 +87,7 @@ create or replace package body eba_stds_parser as
     l_sql clob;
     begin
         apex_debug.message(l_debug_template,'START', 'p_view_name', p_view_name, 'p_app_id', p_app_id);
-        l_sql := apex_string.format(p_message => 'select * from (%0) where application_id = %1',
-                                    p0 => eba_stds_parser.view_sql (p_view_name => p_view_name),
-                                    p1 => p_app_id);
+        l_sql := 'select * from ('||eba_stds_parser.view_sql (p_view_name => p_view_name)||') where application_id = '||p_app_id;
         
         apex_debug.message(l_debug_template, 'l_sql', l_sql);
         return l_sql;
@@ -356,11 +354,11 @@ create or replace package body eba_stds_parser as
                         begin
                             l_cursor := sys.dbms_sql.open_cursor;
                             sys.dbms_sql.parse( l_cursor, 
-                                                -- eba_stds_parser.view_sql (p_view_name => tst_rec.query_view), 
+                                                assert.is_not_null (val_in => tst_rec.query_view , msg_in => 'query_view cannot be null');
+                                                assert.is_not_null (val_in => app_rec.apex_app_id , msg_in => 'app_rec.apex_app_id cannot be null');
                                                 view_sql_w_apex_filter (p_view_name => tst_rec.query_view,
                                                                         p_app_id    => app_rec.apex_app_id),
                                                 dbms_sql.native);
-                            -- sys.dbms_sql.bind_variable( l_cursor, tst_rec.app_bind_variable, app_rec.apex_app_id );
                             sys.dbms_sql.define_column( l_cursor, 1, l_status, column_size => 1 );
                             if tst_rec.test_type = 'FAIL_REPORT' then
                                 sys.dbms_sql.define_column( l_cursor, 2, l_identifier, column_size => 4000 );
@@ -410,7 +408,7 @@ create or replace package body eba_stds_parser as
                                          p_status => case l_total when 0 then 100 else 100*(l_pass_cnt/l_total) end,
                                          p_duration => l_dur_ms );
                         exception when others then
-                            apex_debug.message(l_debug_template, 'others exception', sqlerrm);
+                            apex_debug.message(l_debug_template, 'cursor loop - others exception', sqlerrm);
                             -- If the Check SQL is bad, we don't want to raise the error;
                             -- the status will be null, indicating a bad test.
                             if sys.dbms_sql.is_open( l_cursor ) then
@@ -504,6 +502,16 @@ create or replace package body eba_stds_parser as
                                         );
         apex_debug.message(p_message => l_debug_template, p0 => 'l_link', p1 => l_link, p_level => apex_debug.c_log_level_warn, p_force => true);
     end link_to_db_object;
+
+    procedure link_to_listentry is
+    l_list_entry_id apex_application_list_entries.list_entry_id%type;
+    begin
+        l_list_entry_id := l_url_params(3);
+        l_app := 4000;
+        l_page := 4052;
+        l_link := ':::RP,4050,4052:F4000_P4052_ID,F4000_P4050_LIST_ID,FB_FLOW_ID:'
+            ||l_list_entry_id||','||l_param||','||l_origin_app;
+    end link_to_listentry;
 
     procedure app_in_current_workspace (p_app_id in apex_applications.application_id%type)
     is 
@@ -646,10 +654,7 @@ create or replace package body eba_stds_parser as
                         l_link := ':::4050:FB_FLOW_ID,F4000_P4050_LIST_ID:'
                             ||l_origin_app||','||l_param;
                     when 'LISTENTRY' then
-                        l_app := 4000;
-                        l_page := 4052;
-                        l_link := ':::4050,4052:FB_FLOW_ID,F4000_P4052_ID:'
-                            ||l_origin_app||','||l_param;
+                        link_to_listentry;
                     else
                     -- Someone tried to link to a component we don't support yet.
                         apex_debug.error(p_message => l_debug_template, p0 =>'Unknown link type', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4000);

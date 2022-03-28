@@ -11,5 +11,7 @@ ai.application_name,
 ai.item_name, 
 ai.scope
 from apex_application_items ai
+inner join apex_applications aa on ai.application_id = aa.application_id
+                                and aa.availability_status != 'Unavailable'
 order by ai.application_id, ai.item_name
 ;
