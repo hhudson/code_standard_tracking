@@ -92,6 +92,7 @@ wwv_flow_api.create_install(
 'drop package  eba_stds_fw;',
 'drop package  eba_stds_security;',
 'drop package  eba_stds_data;',
+'drop package  assert;',
 '',
 '-- select apex_string.format(''drop view %0;'',lower(view_name)) stmt',
 '-- from user_views',

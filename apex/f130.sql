@@ -28,7 +28,7 @@ prompt APPLICATION 130 - Application Standards Tracker
 -- Application Export:
 --   Application:     130
 --   Name:            Application Standards Tracker
---   Date and Time:   22:29 Tuesday March 29, 2022
+--   Date and Time:   22:31 Tuesday March 29, 2022
 --   Exported By:     ILA
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -140,7 +140,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220328205618'
+,p_last_upd_yyyymmddhh24miss=>'20220329223134'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>15
 ,p_ui_type_name => null
@@ -34478,6 +34478,7 @@ wwv_flow_api.create_install(
 'drop package  eba_stds_fw;',
 'drop package  eba_stds_security;',
 'drop package  eba_stds_data;',
+'drop package  assert;',
 '',
 '-- select apex_string.format(''drop view %0;'',lower(view_name)) stmt',
 '-- from user_views',

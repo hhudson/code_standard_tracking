@@ -65,7 +65,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220328205618'
+,p_last_upd_yyyymmddhh24miss=>'20220329223134'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>15
 ,p_ui_type_name => null
