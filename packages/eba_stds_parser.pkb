@@ -585,7 +585,6 @@ create or replace package body eba_stds_parser as
             when 'DB_SUPPORTING_OBJECT' then
                 link_to_db_object;
             else 
-                app_in_current_workspace (p_app_id => l_app_being_tested);
                 case l_link_type
                 when 'APPLICATION' then
                     l_app_being_tested := p_param;
