@@ -16,7 +16,6 @@ create or replace package eba_stds_parser authid definer as
 
     procedure update_standard_status;
     function build_link( p_test_id        in eba_stds_standard_tests.id%type, 
-                         p_application_id in apex_applications.application_id%type, 
                          p_param          in varchar2
                          )
         return varchar2;

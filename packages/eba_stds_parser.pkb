@@ -62,6 +62,11 @@ create or replace package body eba_stds_parser as
     l_view_name user_views.view_name%type := upper(p_view_name);
     l_sql_long  user_views.text%type;
     begin
+      
+      assert.is_not_null (  
+                      val_in => p_view_name
+                    , msg_in => 'The View Name must not be null' 
+                );
 
       select text 
         into l_sql_long
@@ -72,10 +77,10 @@ create or replace package body eba_stds_parser as
 
     exception 
         when no_data_found then
-            apex_debug.message(p_message => l_debug_template, p0 => 'View does not exist', p_level => apex_debug.c_log_level_warn, p_force => true);
+            apex_debug.message(p_message => l_debug_template, p0 => 'View does not exist :'||p_view_name, p_level => apex_debug.c_log_level_warn, p_force => true);
             raise;
         when others then
-            apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception', p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4096);
+            apex_debug.error(p_message => l_debug_template, p0 =>'Unhandled Exception :'||p_view_name, p1 => sqlerrm, p5 => sqlcode, p6 => dbms_utility.format_error_stack, p7 => dbms_utility.format_error_backtrace, p_max_length=> 4096);
             raise;
     end view_sql;
 
@@ -353,9 +358,9 @@ create or replace package body eba_stds_parser as
                         l_start := localtimestamp;
                         begin
                             l_cursor := sys.dbms_sql.open_cursor;
+                            assert.is_not_null (val_in => tst_rec.query_view , msg_in => 'query_view cannot be null');
+                            assert.is_not_null (val_in => app_rec.apex_app_id , msg_in => 'app_rec.apex_app_id cannot be null');
                             sys.dbms_sql.parse( l_cursor, 
-                                                assert.is_not_null (val_in => tst_rec.query_view , msg_in => 'query_view cannot be null');
-                                                assert.is_not_null (val_in => app_rec.apex_app_id , msg_in => 'app_rec.apex_app_id cannot be null');
                                                 view_sql_w_apex_filter (p_view_name => tst_rec.query_view,
                                                                         p_app_id    => app_rec.apex_app_id),
                                                 dbms_sql.native);
@@ -425,8 +430,16 @@ create or replace package body eba_stds_parser as
         raise;
     end update_standard_status;
     
+    /**
+     * This public function links to objects in the application workspace from the test results page
+     *
+     *
+     * @author Hayden Hudson
+     * @created March 29, 2022
+     * @p_test_id refers to eba_stds_standard_tests.id → this value is necessary to know the link_type to build (link to app, page, page item, etc)
+     * @p_param colon-separated list of parameters necessary to build the link. The 1st parameter is always application id.
+     */ 
     function build_link( p_test_id        in eba_stds_standard_tests.id%type, 
-                         p_application_id in apex_applications.application_id%type, 
                          p_param          in varchar2
                           )
             return varchar2 is
@@ -442,7 +455,7 @@ create or replace package body eba_stds_parser as
     l_link varchar2(4000) := null;
     l_version number;
     l_url_params apex_t_varchar2 := apex_string.split(p_param, ':');
-    l_origin_app apex_applications.application_id%type;
+    l_app_being_tested apex_applications.application_id%type;
     l_param varchar2(25); -- := l_url_params(2)
     l_valid_workspace boolean := true;
     l_logged_into_builder boolean := true;
@@ -466,7 +479,6 @@ create or replace package body eba_stds_parser as
         l_app := 4500;
             
         l_url_params := apex_string.split(p_param, ':');
-        l_origin_app  := l_url_params(1);
         l_object_name := l_url_params(2);
         l_object_type := case when l_url_params(3) = 'PACKAGE BODY'
                               then 'PACKAGE'
@@ -510,13 +522,22 @@ create or replace package body eba_stds_parser as
         l_app := 4000;
         l_page := 4052;
         l_link := ':::RP,4050,4052:F4000_P4052_ID,F4000_P4050_LIST_ID,FB_FLOW_ID:'
-            ||l_list_entry_id||','||l_param||','||l_origin_app;
+            ||l_list_entry_id||','||l_param||','||l_app_being_tested;
     end link_to_listentry;
 
     procedure app_in_current_workspace (p_app_id in apex_applications.application_id%type)
     is 
     l_dummy number;
     begin
+
+        assert.is_not_null (  
+            val_in => p_app_id
+            , msg_in => 'App id cannot be null');
+
+         assert.is_not_null (  
+            val_in => v('APP_ID')
+            , msg_in => 'You cannot test this outside of an APEX session');
+
         select 1
             into l_dummy
             from apex_applications aa 
@@ -525,23 +546,15 @@ create or replace package body eba_stds_parser as
                                 from apex_applications
                                 where application_id =  v('APP_ID'));
     exception when no_data_found then
-        apex_debug.message(p_message => l_debug_template, p0 =>'wrong workspace', p1 => sqlerrm, p2 => v('APP_ID'));
+        apex_debug.message(p_message => l_debug_template, p0 =>'wrong workspace', p1 => sqlerrm, p2 => v('APP_ID'), p3=> p_app_id);
         l_valid_workspace := false;
     end app_in_current_workspace;
     begin
         apex_debug.message(l_debug_template,'START', 'p_test_id', p_test_id, 
-                                                     'p_application_id', p_application_id, 
                                                      'p_param', p_param,
                                                      'l_builder_session', l_builder_session);
 
         start_assertions;
-
-        l_origin_app := case when p_application_id is not null 
-                             then p_application_id
-                             else l_url_params(1)
-                             end;
-        
-        apex_debug.info(l_debug_template, 'l_origin_app', l_origin_app);
 
         if l_builder_session is null then
             -- Not logged in to the builder; bail out.
@@ -572,13 +585,16 @@ create or replace package body eba_stds_parser as
             when 'DB_SUPPORTING_OBJECT' then
                 link_to_db_object;
             else 
-                app_in_current_workspace (p_app_id => l_origin_app);
+                app_in_current_workspace (p_app_id => l_app_being_tested);
                 case l_link_type
                 when 'APPLICATION' then
+                    l_app_being_tested := p_param;
+                    app_in_current_workspace (p_app_id => l_app_being_tested);
+                    apex_debug.info(l_debug_template, 'l_app_being_tested', l_app_being_tested);
                     l_app := 4000;
                     l_page := 1;
                     l_link := ':::RP:FB_FLOW_ID,F4000_P1_FLOW,P0_FLOWPAGE:'
-                        ||l_origin_app||','||l_origin_app||','||l_origin_app;
+                        ||l_app_being_tested||','||l_app_being_tested||','||l_app_being_tested;
                 else 
                     l_param := l_url_params(2);
                     apex_debug.message(p_message => l_debug_template, p0 => 'l_param', p1 => l_param, p_level => apex_debug.c_log_level_warn, p_force => true);
@@ -588,42 +604,42 @@ create or replace package body eba_stds_parser as
                             l_app := 4000;
                             l_page := 4150;
                             l_link := '::::FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P4150_GOTO_PAGE:'
-                                ||l_origin_app||','||l_param||','||l_param;
+                                ||l_app_being_tested||','||l_param||','||l_param;
                         else
                             l_link := '::NO:1,4150:FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P1_FLOW,F4000_P4150_GOTO_PAGE,F4000_P1_PAGE'
-                                ||':'||l_origin_app||','||l_param||','||l_origin_app||','||l_param||','||l_param
+                                ||':'||l_app_being_tested||','||l_param||','||l_app_being_tested||','||l_param||','||l_param
                                 ||'#5000:'||l_param;
                         end if;
                     when 'REGION' then
                         for c2 in ( select page_id
                                     from apex_application_page_regions
-                                    where application_id = l_origin_app
+                                    where application_id = l_app_being_tested
                                         and region_id = l_param ) loop
                             if l_version < 5 then
                                 l_app := 4000;
                                 l_page := 4651;
                                 l_link := ':::RP,4651,960,420,601,4050,27,196,121,232,695,754,832,287,2000'
                                     ||':FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P4651_ID:'
-                                    ||l_origin_app||','||c2.page_id||','||l_param;
+                                    ||l_app_being_tested||','||c2.page_id||','||l_param;
                             else
                                 l_link := '::NO:1,4150:FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P1_FLOW,F4000_P4150_GOTO_PAGE,F4000_P1_PAGE'
-                                    ||':'||l_origin_app||','||c2.page_id||','||l_origin_app||','||c2.page_id||','||c2.page_id
+                                    ||':'||l_app_being_tested||','||c2.page_id||','||l_app_being_tested||','||c2.page_id||','||c2.page_id
                                     ||'#5110:'||l_param;
                             end if;
                         end loop;
                     when 'PAGE_ITEM' then
                         for c2 in ( select page_id
                                     from apex_application_page_items
-                                    where application_id = l_origin_app
+                                    where application_id = l_app_being_tested
                                         and item_id = l_param ) loop
                             if l_version < 5 then
                                 l_app := 4000;
                                 l_page := 4311;
                                 l_link := ':::RP,4311:FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P4311_ID:'
-                                    ||l_origin_app||','||c2.page_id||','||l_param;
+                                    ||l_app_being_tested||','||c2.page_id||','||l_param;
                             else
                                 l_link := '::NO:1,4150:FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P1_FLOW,F4000_P4150_GOTO_PAGE,F4000_P1_PAGE'
-                                    ||':'||l_origin_app||','||c2.page_id||','||l_origin_app||','||c2.page_id||','||c2.page_id
+                                    ||':'||l_app_being_tested||','||c2.page_id||','||l_app_being_tested||','||c2.page_id||','||c2.page_id
                                     ||'#5120:'||l_param;
                             end if;
                         end loop;
@@ -631,20 +647,20 @@ create or replace package body eba_stds_parser as
                         l_app := 4000;
                         l_page := 4303;
                         l_link := '::::FB_FLOW_ID,F4000_P4303_ID:'
-                            ||l_origin_app||','||l_param;
+                            ||l_app_being_tested||','||l_param;
                     when 'BUTTON' then
                         for c2 in ( select page_id
                                     from apex_application_page_buttons
-                                    where application_id = l_origin_app
+                                    where application_id = l_app_being_tested
                                         and button_id = l_param ) loop
                             if l_version < 5 then
                                 l_app := 4000;
                                 l_page := 4314;
                                 l_link := ':::RP,4314:FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P4314_ID:'
-                                    ||l_origin_app||','||c2.page_id||','||l_param;
+                                    ||l_app_being_tested||','||c2.page_id||','||l_param;
                             else
                                 l_link := '::NO:1,4150:FB_FLOW_ID,FB_FLOW_PAGE_ID,F4000_P1_FLOW,F4000_P4150_GOTO_PAGE,F4000_P1_PAGE'
-                                    ||':'||l_origin_app||','||c2.page_id||','||l_origin_app||','||c2.page_id||','||c2.page_id
+                                    ||':'||l_app_being_tested||','||c2.page_id||','||l_app_being_tested||','||c2.page_id||','||c2.page_id
                                     ||'#5130:'||l_param;
                             end if;
                         end loop;
@@ -652,7 +668,7 @@ create or replace package body eba_stds_parser as
                         l_app := 4000;
                         l_page := 4050;
                         l_link := ':::4050:FB_FLOW_ID,F4000_P4050_LIST_ID:'
-                            ||l_origin_app||','||l_param;
+                            ||l_app_being_tested||','||l_param;
                     when 'LISTENTRY' then
                         link_to_listentry;
                     else
@@ -967,7 +983,7 @@ create or replace package body eba_stds_parser as
                                                             p_build_option_name => 'Link to Builder') = 'INCLUDE' 
                      then
                      'javascript:openInBuilder('''
-                        ||eba_stds_parser.build_link( :P19_TEST_ID, :P19_APPLICATION_ID, ac.c002 )
+                        ||eba_stds_parser.build_link( :P19_TEST_ID, ac.c002 )
                         ||''');'
                      else 'javascript:null;'
                      end as edit_link,
@@ -978,7 +994,7 @@ create or replace package body eba_stds_parser as
                 ac.c031, ac.c032, ac.c033, ac.c034, ac.c035, ac.c036, ac.c037, ac.c038, ac.c039, ac.c040,
                 ac.c041, ac.c042, ac.c043, ac.c044, ac.c045, ac.c046, ac.c047, ac.c048, ac.c049, ac.c050,
                 ac.seq_id,
-                case when length(''''||eba_stds_parser.build_link( :P19_TEST_ID, :P19_APPLICATION_ID, ac.c002 )||'''') > 2 -- only enable button if there is a link to follow
+                case when length(''''||eba_stds_parser.build_link( :P19_TEST_ID, ac.c002 )||'''') > 2 -- only enable button if there is a link to follow
                      then case when ac.c001 = 'Y' or tv.false_positive_yn = 'Y' 
                                then 'success'
                                when tv.legacy_yn = 'Y'
