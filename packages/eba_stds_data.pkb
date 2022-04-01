@@ -20,7 +20,7 @@ create or replace package body eba_stds_data is
             l_data(l_data.count + 1) := rec_data('Initial development'   , '50', 5);
             l_data(l_data.count + 1) := rec_data('Releasable'            , '60', 6);
             l_data(l_data.count + 1) := rec_data('Production'            , '70', 7);
-            l_data(l_data.count + 1) := rec_data('DB Supporting Objects' , '80', 8);
+            l_data(l_data.count + 1) := rec_data('DB Objects'            , '80', 8);
 
             for i in 1..l_data.count loop
                 l_row.name := l_data(i)(1);
@@ -144,7 +144,7 @@ create or replace package body eba_stds_data is
             -- Create a sample standard to hold the tests.
             l_data(l_data.count + 1) := rec_data(1, 'APEX General Standards', 'These are best practices that probably apply to any given APEX application.');
             l_data(l_data.count + 1) := rec_data(2, 'APEX Accessibility Standards', 'These are standards to maintain Accessibility.');
-            l_data(l_data.count + 1) := rec_data(3, 'Supporting DB Object Standards', 'These tests run against the DB objects and therefore may be hard to associate with a given application. They can be associated with the "Application Standards Tracker" app.');
+            l_data(l_data.count + 1) := rec_data(3, 'DB Object Standards', 'These tests run against the DB objects and therefore may be hard to associate with a given application. They can be associated with the "Application Standards Tracker" app.');
 
 
             for i in 1..l_data.count loop

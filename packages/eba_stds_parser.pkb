@@ -488,14 +488,7 @@ create or replace package body eba_stds_parser as
                               end;
         l_line_number := l_url_params(4);
 
-        l_page := case when 1=1
-                        then 1001
-                        when l_object_type = 'FUNCTION'
-                        then 2250
-                        when l_object_type like 'PACKAGE%'
-                        then 2300
-                        else 1001
-                        end;
+        l_page :=1001;
         
         select object_id
         into l_object_id

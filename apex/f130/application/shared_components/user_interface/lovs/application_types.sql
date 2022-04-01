@@ -4,15 +4,15 @@ begin
 --     APPLICATION TYPES
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list_of_values(
- p_id=>wwv_flow_api.id(4409260384870432904)
+ p_id=>wwv_flow_api.id(4428285579813068406)
 ,p_lov_name=>'APPLICATION TYPES'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'

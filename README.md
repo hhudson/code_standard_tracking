@@ -22,8 +22,7 @@ I've recorded a short video to document the installation: [How to Install the Ap
     - the code can now be studied / referenced / corrected outside of the application (eg, merely accessing this repo in a browser allows you to study them)
     - asserting the format of the test assertion queries is simpler this way (eg, requiring field names and their order)
     - reduced risk of SQL injection / XSS attacks from evaluating query stored as a clob
-2. I added "DB Supporting Objects" as an application type in the eba_stds_types table
-3. I added "Database Supporting Object" to the "TEST LINK TYPES" LOV.
+2. I added "Database Supporting Object" to the "TEST LINK TYPES" LOV.
 
 ## How to use PLScope
 

@@ -23,7 +23,7 @@ begin
   l_data(l_data.count + 1) := rec_data('Initial development'   , '50', 5);
   l_data(l_data.count + 1) := rec_data('Releasable'            , '60', 6);
   l_data(l_data.count + 1) := rec_data('Production'            , '70', 7);
-  l_data(l_data.count + 1) := rec_data('DB Supporting Objects' , '80', 8);
+  l_data(l_data.count + 1) := rec_data('DB Objects'            , '80', 8);
 
 
   for i in 1..l_data.count loop

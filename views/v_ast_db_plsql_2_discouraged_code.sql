@@ -6,7 +6,7 @@ case when lower(us.text) like '%nvl%'
      when lower(us.text) like '%decode%'
      then 'Replace with CASE statement'
      when lower(us.text) like '% goto %'
-     then 'GOTO is deprecated'
+     then 'GOTO is discouraged'
      end as issue,
 us.type object_type,
 us.name object_name, 

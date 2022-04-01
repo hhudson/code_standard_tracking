@@ -4,11 +4,11 @@ begin
 --     FLOW: 130
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_flow(
@@ -34,7 +34,7 @@ wwv_flow_api.create_flow(
 ,p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,'')
 ,p_documentation_banner=>'1.0.0 -> 1.0.1: Implemented redesigned administrative ACL controls'
 ,p_authentication=>'PLUGIN'
-,p_authentication_id=>wwv_flow_api.id(8831060754298715933)
+,p_authentication_id=>wwv_flow_api.id(8850085949241351435)
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
 ,p_logo_text=>'&APPLICATION_TITLE.'
@@ -51,7 +51,7 @@ wwv_flow_api.create_flow(
 ,p_browser_frame=>'D'
 ,p_referrer_policy=>'strict-origin-when-cross-origin'
 ,p_runtime_api_usage=>'T'
-,p_security_scheme=>wwv_flow_api.id(7626757402551139512)
+,p_security_scheme=>wwv_flow_api.id(7645782597493775014)
 ,p_rejoin_existing_sessions=>'P'
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
@@ -65,11 +65,12 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_04=>'APP_DATE_TIME_FORMAT'
 ,p_substitution_value_04=>'DD-MON-YYYY HH24:MI'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20220329223134'
+,p_last_upd_yyyymmddhh24miss=>'20220331173004'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>15
 ,p_ui_type_name => null
 ,p_print_server_type=>'INSTANCE'
+,p_is_pwa=>'N'
 );
 wwv_flow_api.component_end;
 end;

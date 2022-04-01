@@ -4,11 +4,11 @@ begin
 --     APP STATIC FILES: 130
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.g_varchar2_table := wwv_flow_api.empty_varchar2_table;
@@ -19,7 +19,7 @@ wwv_flow_api.g_varchar2_table(4) := '535320636F6C6F7220636C6173732A2F5C6E2020202
 wwv_flow_api.g_varchar2_table(5) := '6E20202020202020207B5C6E202020202020202020202020202020207669736962696C6974793A2068696464656E3B5C6E20202020202020207D5C6E5C6E2E73686F775C6E20202020202020207B5C6E2020202020202020202020202020202076697369';
 wwv_flow_api.g_varchar2_table(6) := '62696C6974793A2073686F773B5C6E20202020202020207D225D7D';
 wwv_flow_api.create_app_static_file(
- p_id=>wwv_flow_api.id(3002907460787336719)
+ p_id=>wwv_flow_api.id(3021932655729972221)
 ,p_file_name=>'css/astStyle.css.map'
 ,p_mime_type=>'application/json'
 ,p_file_charset=>'utf-8'

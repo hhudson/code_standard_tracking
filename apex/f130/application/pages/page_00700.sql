@@ -4,16 +4,16 @@ begin
 --     PAGE: 00700
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_page(
  p_id=>700
-,p_user_interface_id=>wwv_flow_api.id(5575227898482645400)
+,p_user_interface_id=>wwv_flow_api.id(5594253093425280902)
 ,p_name=>'Export'
 ,p_alias=>'EXPORT'
 ,p_step_title=>'Export'
@@ -28,37 +28,38 @@ wwv_flow_api.create_page(
 ,p_last_upd_yyyymmddhh24miss=>'20220323230458'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(3177097026558041829)
+ p_id=>wwv_flow_api.id(3196122221500677331)
 ,p_plug_name=>'Hidden Items'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
-,p_plug_template=>wwv_flow_api.id(4420194739183912695)
+,p_plug_template=>wwv_flow_api.id(4439219934126548197)
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
-,p_plug_display_point=>'BODY'
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3177097124845041830)
+ p_id=>wwv_flow_api.id(3196122319787677332)
 ,p_name=>'P700_TEST_ID'
 ,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_api.id(3177097026558041829)
+,p_item_plug_id=>wwv_flow_api.id(3196122221500677331)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_protection_level=>'S'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3177097219465041831)
+ p_id=>wwv_flow_api.id(3196122414407677333)
 ,p_name=>'P700_STANDARD_ID'
 ,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_api.id(3177097026558041829)
+,p_item_plug_id=>wwv_flow_api.id(3196122221500677331)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_protection_level=>'S'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_api.create_page_process(
- p_id=>wwv_flow_api.id(3716902223948028228)
+ p_id=>wwv_flow_api.id(3735927418890663730)
 ,p_process_sequence=>10
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'NATIVE_PLSQL'

@@ -4,15 +4,15 @@ begin
 --     PLUGIN: COM.ORACLE.APEX.SIMPLE_CHECKBOX
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(27309498066101021696)
+ p_id=>wwv_flow_api.id(27328523261043657198)
 ,p_plugin_type=>'ITEM TYPE'
 ,p_name=>'COM.ORACLE.APEX.SIMPLE_CHECKBOX'
 ,p_display_name=>'Simple Checkbox'
@@ -146,8 +146,8 @@ wwv_flow_api.create_plugin(
 ,p_files_version=>2
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(3927299347759768873)
-,p_plugin_id=>wwv_flow_api.id(27309498066101021696)
+ p_id=>wwv_flow_api.id(3946324542702404375)
+,p_plugin_id=>wwv_flow_api.id(27328523261043657198)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -161,8 +161,8 @@ wwv_flow_api.create_plugin_attribute(
 ,p_help_text=>'Enter the value stored if the checkbox is checked.'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(3927299794336768873)
-,p_plugin_id=>wwv_flow_api.id(27309498066101021696)
+ p_id=>wwv_flow_api.id(3946324989279404375)
+,p_plugin_id=>wwv_flow_api.id(27328523261043657198)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
@@ -177,8 +177,8 @@ wwv_flow_api.create_plugin_attribute(
 '<p>Note: This value will also be used if the page item is populated with a value which doesn''t match the "Checked Value" or "Unchecked Value".</p>'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(3927300136144768874)
-,p_plugin_id=>wwv_flow_api.id(27309498066101021696)
+ p_id=>wwv_flow_api.id(3946325331087404376)
+,p_plugin_id=>wwv_flow_api.id(27328523261043657198)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30
@@ -196,11 +196,11 @@ end;
 /
 begin
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.g_varchar2_table := wwv_flow_api.empty_varchar2_table;
@@ -214,16 +214,16 @@ end;
 /
 begin
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin_file(
- p_id=>wwv_flow_api.id(3927300832406768877)
-,p_plugin_id=>wwv_flow_api.id(27309498066101021696)
+ p_id=>wwv_flow_api.id(3946326027349404379)
+,p_plugin_id=>wwv_flow_api.id(27328523261043657198)
 ,p_file_name=>'com_oracle_apex_simple_checkbox.min.js'
 ,p_mime_type=>'application/x-javascript'
 ,p_file_content=>wwv_flow_api.varchar2_to_blob(wwv_flow_api.g_varchar2_table)

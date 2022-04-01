@@ -4,31 +4,31 @@ begin
 --     LIST: Access Control
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_list(
- p_id=>wwv_flow_api.id(7626808412351577462)
+ p_id=>wwv_flow_api.id(7645833607294212964)
 ,p_name=>'Access Control'
 ,p_list_status=>'PUBLIC'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(7626808901733577472)
+ p_id=>wwv_flow_api.id(7645834096676212974)
 ,p_list_item_display_sequence=>20
 ,p_list_item_link_text=>'Access Control'
 ,p_list_item_link_target=>'f?p=&APP_ID.:35:&SESSION.::&DEBUG.::::'
 ,p_list_item_icon=>'fa-key'
 ,p_list_text_01=>'Use to change the Access Control Scope or to disable Access Control.'
 ,p_list_text_02=>'switchIcon'
-,p_security_scheme=>wwv_flow_api.id(7626757203207139501)
+,p_security_scheme=>wwv_flow_api.id(7645782398149775003)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(7626809211900577472)
+ p_id=>wwv_flow_api.id(7645834406843212974)
 ,p_list_item_display_sequence=>30
 ,p_list_item_link_text=>'Users'
 ,p_list_item_link_target=>'f?p=&APP_ID.:26:&SESSION.::&DEBUG.:26,RIR:::'
@@ -38,11 +38,11 @@ wwv_flow_api.create_list_item(
 ,p_list_item_disp_condition2=>'PLSQL'
 ,p_list_text_01=>'Administrators can define the domain of users and assign each a role.'
 ,p_list_text_02=>'userIcon'
-,p_security_scheme=>wwv_flow_api.id(7626757203207139501)
+,p_security_scheme=>wwv_flow_api.id(7645782398149775003)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(5113981493155207011)
+ p_id=>wwv_flow_api.id(5133006688097842513)
 ,p_list_item_display_sequence=>40
 ,p_list_item_link_text=>'Username Format'
 ,p_list_item_link_target=>'f?p=&APP_ID.:13:&SESSION.::&DEBUG.::::'
@@ -50,7 +50,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_disp_cond_type=>'NEVER'
 ,p_list_text_01=>'Define the username format for new users in this application.'
 ,p_list_text_02=>'formIcon'
-,p_security_scheme=>wwv_flow_api.id(7626757203207139501)
+,p_security_scheme=>wwv_flow_api.id(7645782398149775003)
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.component_end;

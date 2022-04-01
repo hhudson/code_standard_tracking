@@ -4,15 +4,15 @@ begin
 --     PLUGIN: COM.ORACLE.APEX.FLEX_FIELD
 --   Manifest End
 wwv_flow_api.component_begin (
- p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.7'
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.2'
 ,p_default_workspace_id=>9690978936188613
 ,p_default_application_id=>130
-,p_default_id_offset=>2991650200555550248
+,p_default_id_offset=>3010675395498185750
 ,p_default_owner=>'ILA'
 );
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(4440166957415778396)
+ p_id=>wwv_flow_api.id(4459192152358413898)
 ,p_plugin_type=>'ITEM TYPE'
 ,p_name=>'COM.ORACLE.APEX.FLEX_FIELD'
 ,p_display_name=>'Flex Field'
@@ -398,8 +398,8 @@ wwv_flow_api.create_plugin(
 ,p_about_url=>'http://apex.oracle.com/plugins'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(4333993010316363406)
-,p_plugin_id=>wwv_flow_api.id(4440166957415778396)
+ p_id=>wwv_flow_api.id(4353018205258998908)
+,p_plugin_id=>wwv_flow_api.id(4459192152358413898)
 ,p_attribute_scope=>'APPLICATION'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
