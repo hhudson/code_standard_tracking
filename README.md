@@ -1,5 +1,8 @@
 # APEX Standards Tracker Project
 
+## How to Contribute
+DM Hayden @haydenhhudson on Twitter.
+
 ## Introduction
 
 In this repo, I am recording methods and queries to track and enforce APEX standards (including in the supporting database objects).
