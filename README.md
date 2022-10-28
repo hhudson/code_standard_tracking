@@ -41,5 +41,9 @@ begin
 end;
 ```
 
+## How to contribute
+
+I am happy to add anyone who asks as a contributor to repo
+
 ## fixed a bug
 set session state protection to 'unrestricted' for both P19_VALIDATE and P20_VALIDATE
